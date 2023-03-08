@@ -75,7 +75,7 @@ export default function Home() {
       </Head>
       <section className="relative mt-10 px-4 sm:px-8 lg:px-12">
         <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-700">
+          <h1 className="font-serif text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl">
             Front-end developer and book enthusiast
           </h1>
           <p className="mt-6 text-zinc-600">
