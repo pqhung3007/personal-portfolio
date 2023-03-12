@@ -1,5 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
+
+import {
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  FacebookIcon,
+} from "@/components/SocialIcons";
+
 import image1 from "@/images/row/image-1.jpg";
 import image2 from "@/images/row/image-2.jpg";
 import image3 from "@/images/row/image-3.jpg";
@@ -61,6 +70,20 @@ function PhotosRow() {
   );
 }
 
+function SocialLink({
+  href,
+  icon: Icon,
+}: {
+  href: string;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+}) {
+  return (
+    <Link href={href} className="group -m-1 p-1">
+      <Icon className="h-7 w-7 fill-zinc-500 transition group-hover:fill-zinc-600" />
+    </Link>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -78,12 +101,31 @@ export default function Home() {
           <h1 className="font-serif text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl">
             Front-end developer and book enthusiast
           </h1>
-          <p className="mt-6 text-zinc-600">
+          <p className="track mt-6 text-base leading-7 tracking-[0.01rem] text-zinc-600">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
             quam at aut, repellat impedit aliquam veniam, labore voluptatibus
             recusandae est, doloribus unde voluptates itaque porro fugit ipsam
             fuga? Numquam, ducimus?
           </p>
+
+          <div className="mt-8 flex gap-4">
+            <SocialLink
+              href="https://www.facebook.com/hung.pq3007/"
+              icon={FacebookIcon}
+            />
+            <SocialLink
+              href="https://www.facebook.com/hung.pq3007/"
+              icon={InstagramIcon}
+            />
+            <SocialLink
+              href="https://www.facebook.com/hung.pq3007/"
+              icon={GitHubIcon}
+            />
+            <SocialLink
+              href="https://www.facebook.com/hung.pq3007/"
+              icon={LinkedInIcon}
+            />
+          </div>
         </div>
       </section>
       <PhotosRow />
