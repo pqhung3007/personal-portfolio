@@ -79,7 +79,7 @@ function SocialLink({
 }) {
   return (
     <Link href={href} className="group -m-1 p-1">
-      <Icon className="h-7 w-7 fill-zinc-500 transition group-hover:fill-zinc-600" />
+      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600" />
     </Link>
   );
 }
