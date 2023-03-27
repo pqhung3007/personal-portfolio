@@ -98,6 +98,16 @@ export default function Home() {
       </Head>
       <section className="relative mt-10 px-4 sm:px-8 lg:px-12">
         <div className="max-w-2xl">
+          <div className="p-10">
+            <div className="group relative w-max">
+              <button>Click me!</button>
+              <span className="pointer-events-none absolute -top-7 left-0 w-max rounded bg-gray-900 px-2 py-1 text-sm font-medium text-gray-50 opacity-0 shadow transition-opacity group-hover:opacity-100">
+                {" "}
+                This is a button.{" "}
+              </span>
+            </div>
+          </div>
+
           <h1 className="font-serif text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl">
             Front-end developer and book enthusiast
           </h1>
