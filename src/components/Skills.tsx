@@ -1,20 +1,34 @@
+import Image from "next/image";
+import Link from "next/link";
 import { PaintBrushIcon } from "@heroicons/react/24/outline";
+import { DocumentArrowDownIcon } from "@heroicons/react/24/outline";
 
-import logoBootstrap from "@/images/logos/bootstrap.svg";
-import logoCss from "@/images/logos/css.svg";
-import logoFigma from "@/images/logos/figma.svg";
-import logoFirebase from "@/images/logos/firebase.svg";
-import logoGit from "@/images/logos/git.svg";
-import logoHtml from "@/images/logos/html.svg";
-import logoJavascript from "@/images/logos/javascript.svg";
-import logoJest from "@/images/logos/jest.svg";
-import logoMysql from "@/images/logos/mysql.svg";
-import logoNext from "@/images/logos/nextjs.svg";
-import logoNpm from "@/images/logos/npm.svg";
-import logoReact from "@/images/logos/react.svg";
-import logoRedux from "@/images/logos/redux.svg";
-import logoTailwind from "@/images/logos/tailwind.svg";
-import logoTypeScript from "@/images/logos/typescript.svg";
+import logoBootstrap from "@/assets/logos/bootstrap.svg";
+import logoCss from "@/assets/logos/css.svg";
+import logoFigma from "@/assets/logos/figma.svg";
+import logoFirebase from "@/assets/logos/firebase.svg";
+import logoGit from "@/assets/logos/git.svg";
+import logoHtml from "@/assets/logos/html.svg";
+import logoJavascript from "@/assets/logos/javascript.svg";
+import logoJest from "@/assets/logos/jest.svg";
+import logoMysql from "@/assets/logos/mysql.svg";
+import logoNext from "@/assets/logos/nextjs.svg";
+import logoNpm from "@/assets/logos/npm.svg";
+import logoReact from "@/assets/logos/react.svg";
+import logoRedux from "@/assets/logos/redux.svg";
+import logoTailwind from "@/assets/logos/tailwind.svg";
+import logoTypeScript from "@/assets/logos/typescript.svg";
+
+/* function handleDownloadCV() {
+  const cvFile = new Blob(["/files/MyCV.pdf"], { type: "application/pdf" });
+  const cvUrl = URL.createObjectURL(cvFile);
+  // cannot trigger download directly from Next.js, so we need to create a link and click it
+  const link = document.createElement("a");
+  link.href = cvUrl;
+  link.download = "MyCV.pdf";
+  link.click();
+}
+ */
 
 export default function Skills() {
   let skills = [
@@ -91,7 +105,41 @@ export default function Skills() {
         The skills I have learned through my projects. But I am craving for
         more.
       </p>
-      <ol className="mt-4 grid grid-cols-5 gap-y-2"></ol>
+      <div className="p-10">
+        <div className="group relative w-max">
+          <button>Click me!</button>
+          <span className="pointer-events-none absolute -top-7 left-0 w-max rounded bg-gray-900 px-2 py-1 text-sm font-medium text-gray-50 opacity-0 shadow transition-opacity group-hover:opacity-100">
+            {" "}
+            This is a button.{" "}
+          </span>
+        </div>
+      </div>
+
+      <ol className="mt-4 grid grid-cols-5 gap-y-4">
+        {skills.map((skill, skillIndex) => (
+          <li key={skillIndex}>
+            <div className="group relative h-12 w-12 flex-none items-center justify-center rounded-full p-2 shadow-md ring-1 ring-zinc-100">
+              <Image
+                src={skill.logo}
+                alt={skill.name}
+                className="grayscale group-hover:grayscale-0"
+              />
+              <span className="pointer-events-none absolute -top-8 left-0 rounded bg-zinc-800 px-2 py-1 text-sm text-zinc-100 opacity-0 transition-opacity group-hover:opacity-100">
+                {skill.name}
+              </span>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <a
+        className="group mt-6 inline-flex w-full items-center justify-center rounded-md bg-zinc-50 p-3 text-sm font-semibold text-zinc-800 transition hover:bg-zinc-100 active:text-zinc-800/60"
+        href="/files/MyCV.pdf"
+        target={"_blank"}
+      >
+        Download CV
+        <DocumentArrowDownIcon className="ml-2 h-4 w-4 stroke-zinc-500 group-hover:stroke-zinc-600" />
+      </a>
     </div>
   );
 }

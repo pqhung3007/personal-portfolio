@@ -7,7 +7,7 @@ import {
   LinkedInIcon,
   FacebookIcon,
 } from "@/components/SocialIcons";
-import portraitImage from "@/images/portrait.jpg";
+import portraitImage from "@/assets/portrait.jpg";
 
 interface SocialLinkProps {
   href: string;

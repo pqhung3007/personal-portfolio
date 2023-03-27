@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
+import Skills from "@/components/Skills";
 import {
   GitHubIcon,
   InstagramIcon,
@@ -9,11 +10,11 @@ import {
   FacebookIcon,
 } from "@/components/SocialIcons";
 
-import image1 from "@/images/row/image-1.jpg";
-import image2 from "@/images/row/image-2.jpg";
-import image3 from "@/images/row/image-3.jpg";
-import image4 from "@/images/row/image-4.jpg";
-import image5 from "@/images/row/image-5.jpg";
+import image1 from "@/assets/row/image-1.jpg";
+import image2 from "@/assets/row/image-2.jpg";
+import image3 from "@/assets/row/image-3.jpg";
+import image4 from "@/assets/row/image-4.jpg";
+import image5 from "@/assets/row/image-5.jpg";
 
 function PhotosRow() {
   let rotations = [
@@ -23,13 +24,13 @@ function PhotosRow() {
     "-rotate-2",
     "rotate-2",
   ];
-  let images = [image1, image2, image3, image4, image5];
+  let assets = [image1, image2, image3, image4, image5];
 
   return (
     <div className="mt-16 max-w-screen-xl overflow-hidden sm:mt-20">
       <div className="flex gap-4 sm:gap-10">
         <div className="flex min-w-full flex-shrink-0 animate-flow justify-center gap-4 py-4 sm:gap-10">
-          {images.map((image, index) => (
+          {assets.map((image, index) => (
             <div
               className={`relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl sm:w-72 ${
                 rotations[index % rotations.length]
@@ -50,7 +51,7 @@ function PhotosRow() {
           aria-hidden="true"
           className="flex min-w-full flex-shrink-0 animate-flow justify-center gap-4 py-4 sm:gap-10"
         >
-          {images.map((image, index) => (
+          {assets.map((image, index) => (
             <div
               className={`relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl sm:w-72 ${
                 rotations[index % rotations.length]
@@ -98,16 +99,6 @@ export default function Home() {
       </Head>
       <section className="relative mt-10 px-4 sm:px-8 lg:px-12">
         <div className="max-w-2xl">
-          <div className="p-10">
-            <div className="group relative w-max">
-              <button>Click me!</button>
-              <span className="pointer-events-none absolute -top-7 left-0 w-max rounded bg-gray-900 px-2 py-1 text-sm font-medium text-gray-50 opacity-0 shadow transition-opacity group-hover:opacity-100">
-                {" "}
-                This is a button.{" "}
-              </span>
-            </div>
-          </div>
-
           <h1 className="font-serif text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl">
             Front-end developer and book enthusiast
           </h1>
@@ -139,6 +130,10 @@ export default function Home() {
         </div>
       </section>
       <PhotosRow />
+
+      <div className="mx-auto max-w-xl ">
+        <Skills />
+      </div>
     </>
   );
 }
