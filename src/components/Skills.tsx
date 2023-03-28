@@ -105,15 +105,6 @@ export default function Skills() {
         The skills I have learned through my projects. But I am craving for
         more.
       </p>
-      <div className="p-10">
-        <div className="group relative w-max">
-          <button>Click me!</button>
-          <span className="pointer-events-none absolute -top-7 left-0 w-max rounded bg-gray-900 px-2 py-1 text-sm font-medium text-gray-50 opacity-0 shadow transition-opacity group-hover:opacity-100">
-            {" "}
-            This is a button.{" "}
-          </span>
-        </div>
-      </div>
 
       <ol className="mt-4 grid grid-cols-5 gap-y-4">
         {skills.map((skill, skillIndex) => (
