@@ -27,7 +27,7 @@ function PhotosRow() {
   let assets = [image1, image2, image3, image4, image5];
 
   return (
-    <div className="mt-16 max-w-screen-xl overflow-hidden sm:mt-20">
+    <div className="mx-auto mt-16 max-w-screen-xl overflow-hidden sm:mt-20">
       <div className="flex gap-4 sm:gap-10">
         <div className="flex min-w-full flex-shrink-0 animate-flow justify-center gap-4 py-4 sm:gap-10">
           {assets.map((image, index) => (
@@ -97,7 +97,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="relative mt-10 px-4 sm:px-8 lg:px-12">
+      <section className="relative mx-auto mt-10 max-w-7xl px-4 sm:px-8 lg:px-12">
         <div className="max-w-2xl">
           <h1 className="font-serif text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl">
             Front-end developer and book enthusiast
