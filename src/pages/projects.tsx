@@ -77,7 +77,7 @@ export default function Projects() {
 
       <section className="mx-auto mt-16 max-w-7xl px-4 sm:mt-32 sm:px-8">
         <header className="max-w-2xl">
-          <h1 className="font-serif text-4xl font-bold tracking-tight text-zinc-800">
+          <h1 className="  text-4xl font-bold tracking-tight text-zinc-800">
             Things I&apos;ve made so far to sharpen my skills
           </h1>
           <p className="mt-6 text-base text-zinc-600">

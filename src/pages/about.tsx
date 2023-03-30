@@ -62,7 +62,7 @@ export default function About() {
           </div>
 
           <div className="lg:order-first lg:row-span-2">
-            <h1 className="font-serif text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl sm:leading-tight">
+            <h1 className=" text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl sm:leading-tight">
               I&apos;m Quang Hung. I live in Hanoi, Vietnam, where I start to
               build my career.
             </h1>
