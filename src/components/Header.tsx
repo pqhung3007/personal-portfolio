@@ -24,7 +24,7 @@ function DesktopNavigation(props: { className?: string }) {
       <ul className="flex rounded-full px-4 text-sm font-semibold text-zinc-800 shadow-lg ring-zinc-900/10 backdrop-blur">
         <DesktopNavItem href="/">Home</DesktopNavItem>
         <DesktopNavItem href="/about">About</DesktopNavItem>
-        <DesktopNavItem href="/blogs">Blog</DesktopNavItem>
+        <DesktopNavItem href="/articles">Articles</DesktopNavItem>
         <DesktopNavItem href="/projects">Projects</DesktopNavItem>
         <DesktopNavItem href="/books">Books</DesktopNavItem>
       </ul>
@@ -78,7 +78,7 @@ function MobileNavigation(props: { className?: string }) {
               <ul className="flex flex-col divide-y divide-zinc-100 text-base text-zinc-800">
                 <MobileNavItem href="/">Home</MobileNavItem>
                 <MobileNavItem href="/about">About</MobileNavItem>
-                <MobileNavItem href="/blogs">Blog</MobileNavItem>
+                <MobileNavItem href="/articles">Articles</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
                 <MobileNavItem href="/books">Books</MobileNavItem>
               </ul>
