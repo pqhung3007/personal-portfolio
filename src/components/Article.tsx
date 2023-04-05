@@ -1,3 +1,4 @@
+import { formatDate } from "@/utils/formatDate";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
@@ -15,7 +16,7 @@ export default function Article({ article }: { article: ArticleMetadata }) {
         <span className="absolute inset-y-0 left-0 flex items-center">
           <span className="h-4 w-0.5 rounded-full bg-zinc-200" />
         </span>
-        {article.date}
+        {formatDate(article.date)}
       </p>
       <h2 className="text-base font-semibold tracking-tight text-zinc-800">
         <div className="absolute -inset-y-6 -inset-x-4 z-10 bg-zinc-50 opacity-0 transition group-hover:opacity-100 sm:rounded-xl" />
