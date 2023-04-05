@@ -15,6 +15,15 @@ import image2 from "@/assets/row/image-2.jpg";
 import image3 from "@/assets/row/image-3.jpg";
 import image4 from "@/assets/row/image-4.jpg";
 import image5 from "@/assets/row/image-5.jpg";
+import { getAllArticles } from "@/utils/getAllArticles";
+import Article from "@/components/Article";
+
+interface ArticleMetadata {
+  title: string;
+  description: string;
+  date: string;
+  slug: string;
+}
 
 function PhotosRow() {
   let rotations = [
@@ -85,7 +94,7 @@ function SocialLink({
   );
 }
 
-export default function Home() {
+export default function Home({ articles }: { articles: ArticleMetadata[] }) {
   return (
     <>
       <Head>
@@ -131,9 +140,29 @@ export default function Home() {
       </section>
       <PhotosRow />
 
-      <div className="mx-auto max-w-xl ">
-        <Skills />
+      <div className="mx-auto mt-24 max-w-7xl px-4 sm:px-8 lg:px-12">
+        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+          <div className="flex flex-col gap-16">
+            {articles.map((article) => (
+              <Article key={article.slug} article={article} />
+            ))}
+          </div>
+
+          <div className="pl-16">
+            <Skills />
+          </div>
+        </div>
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      articles: (await getAllArticles())
+        .slice(0, 3)
+        .map(({ component, ...metadata }) => metadata),
+    },
+  };
 }
