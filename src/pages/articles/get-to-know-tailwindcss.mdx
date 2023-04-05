@@ -1,0 +1,116 @@
+# Tại sao mình chọn TailwindCSS cho các dự án frontend cá nhân?
+
+## Lời mở đầu
+
+Khi nói đến thiết kế UI, đôi khi bạn sẽ bị ngợp trước số lượng đông đảo các CSS Framework đang được sử dụng như Bootstrap, ChakraUI, Tailwind CSS. Những người mới có thể sẽ phải “đau đầu” để tìm ra công cụ thực sự phù hợp với bản thân, dựa vào các yếu tố như thời gian học, độ phức tạp, sự hỗ trợ của cộng đồng,...
+
+Trong bài viết này, mình sẽ nói về TailwindCSS - một CSS framework với sự dễ sử dụng và đa năng đang chiếm rất nhiều cảm tình của dev, trong đó có mình :D. Hơn nữa, như tiêu đề, mình sẽ giải thích lý do tại sao Tailwind là sự lựa chọn hàng đầu cho các project mình tự làm nhé. Ok, let’s go!
+
+| Nội dung bài viết |
+| ----------------- |
+
+1.  Tailwind CSS là gì?
+2.  Những điều khiến mình “ngã vào” Tailwind\
+    2.1 Không cần đặt tên class\
+    2.2 Khả năng tùy biến cao\
+    2.3 Responsiveness\
+    2.4 Giúp mình học tốt hơn
+3.  Những lưu ý về việc sử dụng Tailwind
+
+## 1. Tailwind CSS là gì?
+
+Theo nguyên gốc tiếng anh trên trang chủ
+
+> Tailwind A **utility-first CSS framework** packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
+
+Về cơ bản, Tailwind sử dụng các tên class được nhúng sẵn CSS để styling trang web. Tuy nhiên, nó không có “built-in class” được tích hợp sẵn như Bootstrap (nếu bạn đã tìm hiểu). Thay vào đó, chúng ta sẽ là những kiến trúc sư chính trong việc thiết kế giao diện cho sản phẩm của mình.
+
+## 2. Những lý do khiến mình “ngã vào” Tailwind
+
+### 2.1 Không cần đặt tên class
+
+Chắc chắn trong quá trình học CSS bạn đã từng đau đầu nghĩ tên class cho một chiếc button cảnh báo hay một chiếc card. Với Tailwind, bạn chỉ cần sử dụng các utility-class có sẵn, trong khuôn khổ Design System được thiết kế rành mạch bởi đội ngũ phát triển của Tailwind. Dễ thở chưa nào? Đây chính là điểm mình thích nhất ở framework này, nó giúp mình tiết kiệm rất nhiều thời gian để làm những việc có ích hơn :3
+
+Thay vì làm như sau với CSS thuần:
+
+```html
+<button class="btn btn-danger">Delete</button>
+```
+
+```css
+.btn-danger {
+  padding: 8px 16px;
+  background-color: #ef4444;
+  color: white;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #b91c1c;
+  }
+}
+```
+
+Bạn chỉ cần một vài utility-class như sau:
+
+```html
+<button class="rounded-lg bg-red-500 px-4 py-2 text-white hover:bg-red-700">
+  Delete
+</button>
+```
+
+### 2.2 Khả năng tùy biến cao
+
+Với một con người yêu thích sự tự do trong thiết kế như mình thì đặc điểm này của Tailwind thực sự là một điểm cộng lớn. Mặc dù đã có một hệ thống utility-class hoàn chỉnh, Tailwind vẫn cho phép mình tùy biến các font chữ, khoảng cách, màu sắc, kích thước, v.v... qua file `tailwind.config.js`. Yêu thích font chữ Inter và một hệ màu theo ý của bạn? Cùng chỉnh sửa nào:
+
+```js
+module.exports = {
+  theme: {
+    fontFamily: {
+      sans: ["Inter", "sans-serif"],
+    },
+    extend: {
+      colors: {
+        primary: "#1F2937",
+        secondary: "#10B981",
+        danger: "#EF4444",
+      },
+    },
+  },
+};
+```
+
+### 2.3 Responsiveness
+
+Gần như ở thời điểm hiện tại, chúng ta không bao giờ xây dựng một giao diện chỉ dành riêng cho màn hình desktop nữa, với sự phát triển vượt trội của các thiết bị mobile, hay xu hướng thiết kế mobile-first. Thật may mắn, Tailwind đã nắm bắt được điều này. Chỉ với những tiền tố như `md:`, `lg:` hay `xl:` đặt trước các utility-class bạn đã có thể dễ dàng tạo ra nhiều giao diện responsive cùng một lúc cho sản phẩm của mình. Cùng lấy ví dụ nhé:
+
+```html
+<div class="md:flex md:justify-between">
+  <div class="md:w-1/2">
+    <h1 class="text-2xl font-bold">Hello</h1>
+    <p class="text-gray-500">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.
+    </p>
+  </div>
+  <div class="md:w-1/2">
+    <img src="https://picsum.photos/400/300" alt="image" />
+  </div>
+</div>
+```
+
+**Giải thích code**: Khi màn hình lớn hơn 768px, thuộc tính `display: flex` và `justify-content: space-between` cho div cha sẽ được áp dụng, còn khi màn hình nhỏ hơn 768px, các thuộc tính này sẽ bị bỏ qua. Cùng với đó, mỗi div con sẽ có chiều rộng là 50% của div cha.
+
+### 2.4 Giúp mình học tốt hơn
+
+Có thể bạn không tin, nhưng chính Tailwind CSS đã giúp mình có những khoảnh khắc "Wow" khi hiểu hơn được một số thuộc tính trong CSS được sử dụng như thế nào.
+
+Ví dụ với class `flex-1` của Tailwind, mình đã hiểu được thuộc tính tương đương `flex: 1 1 0%` của CSS. Nó có nghĩa là cho phép một flex item có thể co giãn theo nhu cầu, bất kể độ rộng ban đầu của nó. Hay như việc mình chưa từng nghe đến thuộc tính `scroll-margin` của CSS cho đến khi sử dụng nó trong Tailwind để kiểm soát khoảng cách giữa các items đang được focus và đường biên của trang web.
+
+## 3. Lưu ý về việc sử dụng Tailwind
+
+Tuy thuận tiện là thế, nhưng Tailwind về cơ bản là một framework CSS. Nói một cách ví von, không ai học chạy trước khi học đi cả. Vậy nên, bạn cần nắm rõ những điều cơ bản về plain CSS trước khi sử dụng Tailwind để có thể sử dụng nó một cách hiệu quả nhất, tránh phụ thuộc vào những công cụ framework. Các bạn newbie ghi nhớ điều đó nhé!
+
+## Lời kết
+
+Hi vọng những gì mình chia sẻ đã kích thích sự tò mò và mong muốn đào sâu Tailwind CSS của các bạn. Tin mình đi, việc sử dụng nó một cách thành thạo sẽ khiến hành trình dev frontend của các bạn trơn tru hơn rất nhiều đấy 😄
+
+Nếu có bất kỳ câu hỏi nào, các bạn có thể liên hệ mình qua facebook [Phạm Quang Hưng](https://www.facebook.com/hung.pq3007/) nhé. Cảm ơn các bạn đã đọc bài viết của mình!
