@@ -127,6 +127,7 @@ export default function Skills() {
         className="group mt-6 inline-flex w-full items-center justify-center rounded-md bg-zinc-50 p-3 text-sm font-semibold text-zinc-800 transition hover:bg-zinc-100 active:text-zinc-800/60"
         href="/files/MyCV.pdf"
         target={"_blank"}
+        download
       >
         Download CV
         <DocumentArrowDownIcon className="ml-2 h-4 w-4 stroke-zinc-500 group-hover:stroke-zinc-600" />
