@@ -2,7 +2,12 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { LinkIcon } from "@heroicons/react/24/outline";
-import logoDuolingo from "@/assets/logos/duolingo.svg";
+import logoSpeaker from "@/assets/logos/speaker.svg";
+import logoPainting from "@/assets/logos/painting.svg";
+import logoClock from "@/assets/logos/clock.svg";
+import logoQuiz from "@/assets/logos/quiz.svg";
+import logoRecorder from "@/assets/logos/film-recorder.svg";
+import logoNote from "@/assets/logos/note.svg";
 
 export default function Projects() {
   const projects = [
@@ -14,7 +19,7 @@ export default function Projects() {
         href: "https://jemember.jsclub.tech/",
         label: "jemember.jsclub.tech",
       },
-      logo: logoDuolingo,
+      logo: logoQuiz,
     },
     {
       name: "Dev Notes",
@@ -24,7 +29,7 @@ export default function Projects() {
         href: "https://audiophile-ecommerce-website-pqhung3007.vercel.app/",
         label: "View project",
       },
-      logo: logoDuolingo,
+      logo: logoNote,
     },
     {
       name: "Audiophile",
@@ -34,7 +39,7 @@ export default function Projects() {
         href: "https://audiophile-ecommerce-website-pqhung3007.vercel.app/",
         label: "vercel.com",
       },
-      logo: logoDuolingo,
+      logo: logoSpeaker,
     },
     {
       name: "Art Gallery",
@@ -44,7 +49,7 @@ export default function Projects() {
         href: "https://art-gallery-pqhung3007.vercel.app/",
         label: "vercel.com",
       },
-      logo: logoDuolingo,
+      logo: logoPainting,
     },
     {
       name: "Pomodoro Clock",
@@ -54,7 +59,7 @@ export default function Projects() {
         href: "https://pomodoro-clock-pqhung3007.vercel.app/",
         label: "vercel.com",
       },
-      logo: logoDuolingo,
+      logo: logoClock,
     },
     {
       name: "Movie Entertainment App",
@@ -64,7 +69,7 @@ export default function Projects() {
         href: "https://movie-entertainment-app-yis8-pqhung3007.vercel.app/",
         label: "vercel.com",
       },
-      logo: logoDuolingo,
+      logo: logoRecorder,
     },
   ];
 
