@@ -40,7 +40,7 @@ Card.Link = function CardLink({
 }) {
   return (
     <>
-      <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
+      <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 shadow-sm shadow-zinc-300 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
       <Link href={href}>
         <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl" />
         <span className="relative z-10">{children}</span>
@@ -88,9 +88,9 @@ Card.Cta = function CardCta({
   children: React.ReactNode;
 }) {
   return (
-    <Component className="relative z-10 mt-4 flex items-center text-sm font-semibold text-blue-500">
+    <Component className="relative z-10 mt-4 flex items-center text-sm font-semibold text-zinc-600 group-hover:text-blue-500">
       {children}
-      <ChevronRightIcon className="ml-2 h-4 w-4" />
+      <ChevronRightIcon className="h-4 w-4 opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100" />
     </Component>
   );
 };

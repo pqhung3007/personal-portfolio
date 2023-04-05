@@ -84,7 +84,7 @@ export default function Skills() {
   ];
 
   return (
-    <div className="rounded-2xl border border-zinc-100 p-6">
+    <div className="rounded-2xl border border-zinc-100 p-6 shadow-sm shadow-zinc-300">
       <h2 className="flex text-sm font-semibold text-zinc-800">
         <PaintBrushIcon className="mr-2 h-5 w-5 text-zinc-500" />
         <span>Skills</span>
@@ -98,11 +98,7 @@ export default function Skills() {
         {skills.map((skill, skillIndex) => (
           <li key={skillIndex}>
             <div className="group relative h-12 w-12 flex-none items-center justify-center rounded-full p-2 shadow-md ring-1 ring-zinc-100">
-              <Image
-                src={skill.logo}
-                alt={skill.name}
-                className="grayscale group-hover:grayscale-0"
-              />
+              <Image src={skill.logo} alt={skill.name} />
               <span className="pointer-events-none absolute -top-8 left-0 rounded bg-zinc-800 px-2 py-1 text-sm text-zinc-100 opacity-0 transition-opacity group-hover:opacity-100">
                 {skill.name}
               </span>
