@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { PaintBrushIcon } from "@heroicons/react/24/outline";
 import { DocumentArrowDownIcon } from "@heroicons/react/24/outline";
 
@@ -18,17 +17,6 @@ import logoReact from "@/assets/logos/react.svg";
 import logoRedux from "@/assets/logos/redux.svg";
 import logoTailwind from "@/assets/logos/tailwind.svg";
 import logoTypeScript from "@/assets/logos/typescript.svg";
-
-/* function handleDownloadCV() {
-  const cvFile = new Blob(["/files/MyCV.pdf"], { type: "application/pdf" });
-  const cvUrl = URL.createObjectURL(cvFile);
-  // cannot trigger download directly from Next.js, so we need to create a link and click it
-  const link = document.createElement("a");
-  link.href = cvUrl;
-  link.download = "MyCV.pdf";
-  link.click();
-}
- */
 
 export default function Skills() {
   let skills = [

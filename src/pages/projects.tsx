@@ -8,6 +8,7 @@ import logoClock from "@/assets/logos/clock.svg";
 import logoQuiz from "@/assets/logos/quiz.svg";
 import logoRecorder from "@/assets/logos/film-recorder.svg";
 import logoNote from "@/assets/logos/note.svg";
+import { Card } from "@/components/Card";
 
 export default function Projects() {
   const projects = [
@@ -96,32 +97,28 @@ export default function Projects() {
         <div className="mt-16 sm:mt-20">
           <ul className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => {
-              const { name, description, link, logo } = project;
+              const {
+                name,
+                description,
+                link: { label, href },
+                logo,
+              } = project;
               return (
-                <li
-                  key={name}
-                  className="group relative flex flex-col items-start"
-                >
+                <Card as="li" key={name}>
                   <div className="relative z-20 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-900/10">
                     <Image src={logo} alt="name" className="h-8 w-8" />
                   </div>
 
                   <h2 className="mt-6 text-base font-semibold text-zinc-800">
-                    <div className="absolute -inset-y-6 -inset-x-4 z-10 bg-zinc-50 opacity-0 transition group-hover:opacity-100 sm:rounded-xl" />
-                    <Link href={link.href}>
-                      <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:rounded-2xl" />
-                      <span className="relative z-10">{name}</span>
-                    </Link>
+                    <Card.Link href={href}>{name}</Card.Link>
                   </h2>
 
-                  <p className="z-10 mt-2 text-sm font-medium text-zinc-600">
-                    {description}
-                  </p>
-                  <p className="z-10 mt-6 flex items-center text-sm font-medium text-zinc-400 transition group-hover:text-blue-500">
-                    <LinkIcon className="h-4 w-4 text-zinc-400 group-hover:text-zinc-600" />
-                    <span className="ml-2">{link.label}</span>
-                  </p>
-                </li>
+                  <Card.Description>{description}</Card.Description>
+                  <Card.Cta>
+                    <LinkIcon className="mr-2 h-4 w-4 text-zinc-400 group-hover:text-zinc-600" />
+                    {label}
+                  </Card.Cta>
+                </Card>
               );
             })}
           </ul>
