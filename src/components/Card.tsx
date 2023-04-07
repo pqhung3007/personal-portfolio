@@ -25,7 +25,7 @@ Card.Title = function CardTitle({
   children: React.ReactNode;
 }) {
   return (
-    <Component className="text-base font-semibold tracking-tight text-zinc-800">
+    <Component className="text-base font-semibold text-zinc-800">
       {href ? <Card.Link href={href}>{children}</Card.Link> : { children }}
     </Component>
   );
@@ -40,9 +40,9 @@ Card.Link = function CardLink({
 }) {
   return (
     <>
-      <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 shadow-sm shadow-zinc-300 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
+      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 shadow-sm shadow-zinc-300 transition group-hover:scale-100 group-hover:opacity-100  sm:rounded-2xl" />
       <Link href={href}>
-        <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl" />
+        <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:rounded-2xl" />
         <span className="relative z-10">{children}</span>
       </Link>
     </>
