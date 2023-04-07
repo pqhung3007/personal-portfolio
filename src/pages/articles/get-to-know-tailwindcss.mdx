@@ -1,9 +1,15 @@
+import { ArticleLayout } from "../../components/ArticleLayout";
+
 export const metadata = {
   date: "2023-02-27",
   title: "Why do I prefer TailwindCSS for my personal projects",
   description:
     "Are you tired of writing custom CSS for every new project? In this article, I explore why I prefer using TailwindCSS for my personal projects, and how it can save you time and effort in your own development workflow.",
 };
+
+export default ({ children }) => (
+  <ArticleLayout metadata={metadata}>{children}</ArticleLayout>
+);
 
 # Why do I prefer TailwindCSS for my personal projects?
 
