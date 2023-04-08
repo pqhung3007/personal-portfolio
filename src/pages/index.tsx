@@ -3,21 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Skills from "@/components/Skills";
+import Article from "@/components/Article";
+import Container from "@/components/Container";
 import {
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
   FacebookIcon,
 } from "@/components/SocialIcons";
+import { getAllArticles } from "@/utils/getAllArticles";
 
+import portrait from "@/assets/portrait.jpg";
 import image1 from "@/assets/row/image-1.jpg";
 import image2 from "@/assets/row/image-2.jpg";
 import image3 from "@/assets/row/image-3.jpg";
 import image4 from "@/assets/row/image-4.jpg";
 import image5 from "@/assets/row/image-5.jpg";
-import { getAllArticles } from "@/utils/getAllArticles";
-import Article from "@/components/Article";
-import Container from "@/components/Container";
 
 interface ArticleMetadata {
   title: string;
@@ -109,7 +110,12 @@ export default function Home({ articles }: { articles: ArticleMetadata[] }) {
       </Head>
       <Container className="relative mt-10">
         <div className="max-w-2xl">
-          <h1 className="  text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl">
+          <Image
+            src={portrait}
+            alt="portrait"
+            className="h-16 w-16 rounded-full object-cover ring-1 ring-zinc-300 ring-offset-1"
+          />
+          <h1 className="mt-8 text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl">
             Front-end developer and book enthusiast
           </h1>
           <p className="track mt-6 text-base leading-7 tracking-[0.01rem] text-zinc-600">

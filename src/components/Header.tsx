@@ -11,7 +11,7 @@ interface NavItemProps {
 
 export default function Header() {
   return (
-    <div className="mt-8 flex flex-1 justify-end md:justify-center">
+    <div className="sticky top-8 z-10 mt-8 flex flex-1 justify-end md:justify-center">
       <DesktopNavigation className="hidden md:block" />
       <MobileNavigation className="block md:hidden" />
     </div>
@@ -100,6 +100,9 @@ function DesktopNavItem({ href, children }: NavItemProps) {
       }`}
     >
       {children}
+      {isActive && (
+        <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0" />
+      )}
     </Link>
   );
 }
