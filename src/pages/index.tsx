@@ -17,6 +17,7 @@ import image4 from "@/assets/row/image-4.jpg";
 import image5 from "@/assets/row/image-5.jpg";
 import { getAllArticles } from "@/utils/getAllArticles";
 import Article from "@/components/Article";
+import Container from "@/components/Container";
 
 interface ArticleMetadata {
   title: string;
@@ -106,7 +107,7 @@ export default function Home({ articles }: { articles: ArticleMetadata[] }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="relative mx-auto mt-10 max-w-7xl px-4 sm:px-8 lg:px-12">
+      <Container className="relative mt-10">
         <div className="max-w-2xl">
           <h1 className="  text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl">
             Front-end developer and book enthusiast
@@ -137,10 +138,10 @@ export default function Home({ articles }: { articles: ArticleMetadata[] }) {
             />
           </div>
         </div>
-      </section>
+      </Container>
       <PhotosRow />
 
-      <div className="mx-auto mt-24 max-w-7xl px-4 sm:px-8 lg:px-12">
+      <Container className="mt-20">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {articles.map((article) => (
@@ -148,11 +149,11 @@ export default function Home({ articles }: { articles: ArticleMetadata[] }) {
             ))}
           </div>
 
-          <div className="pl-16">
+          <div className="lg:pl-16">
             <Skills />
           </div>
         </div>
-      </div>
+      </Container>
     </>
   );
 }

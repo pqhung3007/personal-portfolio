@@ -8,6 +8,7 @@ import {
   FacebookIcon,
 } from "@/components/SocialIcons";
 import portraitImage from "@/assets/portrait.jpg";
+import Container from "@/components/Container";
 
 interface SocialLinkProps {
   href: string;
@@ -46,12 +47,10 @@ export default function About() {
         />
       </Head>
 
-      <section className="relative mx-auto mt-16 max-w-7xl px-4 sm:px-6 md:px-8">
+      <Container className="mt-16 sm:mt-24">
         <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-2 ">
           <div className="lg:pl-20">
             <div className="max-w-xs px-12 lg:max-w-none">
-              {" "}
-              {/* review the padding later*/}
               <Image
                 src={portraitImage}
                 alt="Portrait of Quang Hung Pham"
@@ -132,7 +131,7 @@ export default function About() {
             </ul>
           </div>
         </div>
-      </section>
+      </Container>
     </>
   );
 }
