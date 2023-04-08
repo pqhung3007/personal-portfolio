@@ -9,7 +9,7 @@ export default function Footer() {
             <div className="flex gap-6 text-sm font-medium text-zinc-800">
               <NavLink href="/">Home</NavLink>
               <NavLink href="/about">About</NavLink>
-              <NavLink href="/blogs">Blog</NavLink>
+              <NavLink href="/articles">Articles</NavLink>
               <NavLink href="/projects">Projects</NavLink>
               <NavLink href="/books">Books</NavLink>
             </div>
