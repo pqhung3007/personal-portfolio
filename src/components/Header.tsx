@@ -1,8 +1,17 @@
 import { Fragment } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { Popover, Transition } from "@headlessui/react";
-import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Container from "./Container";
+
+import portrait from "@/assets/portrait.jpg";
+import {
+  ChevronDownIcon,
+  MoonIcon,
+  SunIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 interface NavItemProps {
   href: string;
@@ -10,10 +19,43 @@ interface NavItemProps {
 }
 
 export default function Header() {
+  function handleSetTheme() {
+    let systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    let isDarkMode = document.documentElement.classList.toggle("dark");
+    if (isDarkMode === systemTheme) {
+      delete window.localStorage.isDarkMode;
+    } else {
+      window.localStorage.isDarkMode = isDarkMode;
+    }
+  }
+
   return (
-    <div className="sticky top-8 z-10 mt-8 flex flex-1 justify-end md:justify-center">
-      <DesktopNavigation className="hidden md:block" />
-      <MobileNavigation className="block md:hidden" />
+    <div className="sticky top-8 z-10 mt-8">
+      <Container>
+        <div className="flex items-center gap-4">
+          <div className="flex flex-1">
+            <Image
+              src={portrait}
+              alt="portrait"
+              className="h-8 w-8 rounded-full object-cover ring-1 ring-zinc-300 ring-offset-1 md:h-10 md:w-10"
+            />
+          </div>
+          <div className=" flex flex-1 justify-end md:justify-center">
+            <DesktopNavigation className="hidden md:block" />
+            <MobileNavigation className="block md:hidden" />
+          </div>
+          <div className="flex justify-end md:flex-1">
+            <button
+              aria-label="Toggle dark mode"
+              className="ring1 rounded-full bg-white px-3 py-2 shadow-md shadow-zinc-800/5 ring-zinc-200"
+              onClick={handleSetTheme}
+            >
+              <SunIcon className="h-6 w-6 text-zinc-500 dark:hidden" />
+              <MoonIcon className="hidden h-6 w-6 text-zinc-500 dark:block" />
+            </button>
+          </div>
+        </div>
+      </Container>
     </div>
   );
 }
