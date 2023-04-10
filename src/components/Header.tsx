@@ -34,11 +34,13 @@ export default function Header() {
       <Container>
         <div className="flex items-center gap-4">
           <div className="flex flex-1">
-            <Image
-              src={portrait}
-              alt="portrait"
-              className="h-8 w-8 rounded-full object-cover ring-1 ring-zinc-300 ring-offset-1 md:h-10 md:w-10"
-            />
+            <Link href="/">
+              <Image
+                src={portrait}
+                alt="portrait"
+                className="h-8 w-8 rounded-full object-cover ring-1 ring-zinc-300 ring-offset-1 md:h-10 md:w-10"
+              />
+            </Link>
           </div>
           <div className=" flex flex-1 justify-end md:justify-center">
             <DesktopNavigation className="hidden md:block" />
