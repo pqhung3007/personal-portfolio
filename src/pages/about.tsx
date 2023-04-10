@@ -27,9 +27,9 @@ function SocialLink({
     <li className={`flex ${className}`}>
       <Link
         href={href}
-        className="group flex items-center text-sm font-semibold text-zinc-800 transition hover:text-blue-600"
+        className="group flex items-center text-sm font-semibold text-zinc-800 transition hover:text-blue-600 dark:text-zinc-300 dark:hover:text-zinc-100"
       >
-        <Icon className="h-6 w-6 from-zinc-600 group-hover:fill-blue-500" />
+        <Icon className="h-6 w-6 fill-zinc-600 group-hover:fill-blue-500 dark:fill-zinc-200" />
         <span className="ml-4">{children}</span>
       </Link>
     </li>
@@ -61,11 +61,11 @@ export default function About() {
           </div>
 
           <div className="lg:order-first lg:row-span-2">
-            <h1 className=" text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl sm:leading-tight">
+            <h1 className=" text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl sm:leading-tight">
               I&apos;m Quang Hung. I live in Hanoi, Vietnam, where I start to
               build my career.
             </h1>
-            <div className="mt-8 space-y-6 text-base leading-7 text-zinc-600">
+            <div className="mt-8 space-y-6 text-base leading-7 text-zinc-600 dark:text-zinc-400">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
                 sequi optio ex quis laboriosam cupiditate vel, libero impedit

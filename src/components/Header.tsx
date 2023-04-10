@@ -49,11 +49,11 @@ export default function Header() {
           <div className="flex justify-end md:flex-1">
             <button
               aria-label="Toggle dark mode"
-              className="ring1 rounded-full bg-white px-3 py-2 shadow-md shadow-zinc-800/5 ring-zinc-200"
+              className="ring1 rounded-full bg-white px-3 py-2 shadow-md shadow-zinc-800/5 ring-zinc-200 dark:bg-zinc-700"
               onClick={handleSetTheme}
             >
               <SunIcon className="h-6 w-6 text-zinc-500 dark:hidden" />
-              <MoonIcon className="hidden h-6 w-6 text-zinc-500 dark:block" />
+              <MoonIcon className="hidden h-6 w-6 text-zinc-500 dark:block dark:text-zinc-200" />
             </button>
           </div>
         </div>
@@ -65,7 +65,7 @@ export default function Header() {
 function DesktopNavigation(props: { className?: string }) {
   return (
     <nav {...props}>
-      <ul className="flex rounded-full px-4 text-sm font-semibold text-zinc-800 shadow-lg ring-zinc-900/10 backdrop-blur">
+      <ul className="flex rounded-full px-4 text-sm font-semibold shadow-lg ring-zinc-900/10 backdrop-blur dark:bg-zinc-800">
         <DesktopNavItem href="/">Home</DesktopNavItem>
         <DesktopNavItem href="/about">About</DesktopNavItem>
         <DesktopNavItem href="/articles">Articles</DesktopNavItem>
@@ -79,9 +79,9 @@ function DesktopNavigation(props: { className?: string }) {
 function MobileNavigation(props: { className?: string }) {
   return (
     <Popover {...props}>
-      <Popover.Button className="group flex items-center justify-center rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-md shadow-zinc-800/10 ring-1 ring-zinc-900/10">
+      <Popover.Button className="group flex items-center justify-center rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-zinc-800 shadow-md shadow-zinc-800/10 ring-1 ring-zinc-900/10 dark:bg-zinc-700 dark:text-zinc-100">
         Menu
-        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700" />
+        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:stroke-zinc-200" />
       </Popover.Button>
 
       <Transition.Root>
@@ -105,21 +105,21 @@ function MobileNavigation(props: { className?: string }) {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <Popover.Panel className="absolute inset-x-4 z-30 origin-top transform rounded-2xl bg-white px-8 py-6 transition">
+          <Popover.Panel className="absolute inset-x-4 z-30 origin-top transform rounded-2xl bg-white px-8 py-6 transition dark:bg-zinc-700">
             <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-zinc-600">
+              <h2 className="text-sm font-semibold text-zinc-600 dark:text-zinc-400">
                 Navigation
               </h2>
               <Popover.Button
                 aria-label="Close panel"
-                className="-m-1 rounded-full bg-white/90 p-1"
+                className="-m-1 rounded-full bg-white/90 p-1 dark:bg-zinc-800/70"
               >
-                <XMarkIcon className="h-6 w-6 text-zinc-600" />
+                <XMarkIcon className="h-6 w-6 text-zinc-600 dark:text-zinc-400" />
               </Popover.Button>
             </div>
 
             <nav className="mt-6">
-              <ul className="flex flex-col divide-y divide-zinc-100 text-base text-zinc-800">
+              <ul className="flex flex-col divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-600 dark:text-zinc-100">
                 <MobileNavItem href="/">Home</MobileNavItem>
                 <MobileNavItem href="/about">About</MobileNavItem>
                 <MobileNavItem href="/articles">Articles</MobileNavItem>
@@ -140,7 +140,7 @@ function DesktopNavItem({ href, children }: NavItemProps) {
     <Link
       href={href}
       className={`relative block p-3 transition ${
-        isActive ? "text-blue-600" : "text-zinc-800"
+        isActive ? "text-blue-600" : "text-zinc-800 dark:text-zinc-100"
       }`}
     >
       {children}

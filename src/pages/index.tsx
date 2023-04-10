@@ -90,7 +90,7 @@ function SocialLink({
 }) {
   return (
     <Link href={href} className="group -m-1 p-1">
-      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600" />
+      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 group-hover:dark:fill-zinc-200" />
     </Link>
   );
 }
@@ -109,10 +109,10 @@ export default function Home({ articles }: { articles: ArticleMetadata[] }) {
       </Head>
       <Container className="relative mt-10">
         <div className="max-w-2xl">
-          <h1 className="mt-8 text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl">
+          <h1 className="mt-8 text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Front-end developer and book enthusiast
           </h1>
-          <p className="track mt-6 text-base leading-7 tracking-[0.01rem] text-zinc-600">
+          <p className="track mt-6 text-base leading-7 tracking-[0.01rem] text-zinc-600 dark:text-zinc-400">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
             quam at aut, repellat impedit aliquam veniam, labore voluptatibus
             recusandae est, doloribus unde voluptates itaque porro fugit ipsam

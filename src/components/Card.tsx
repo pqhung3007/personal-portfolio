@@ -25,7 +25,7 @@ Card.Title = function CardTitle({
   children: React.ReactNode;
 }) {
   return (
-    <Component className="text-base font-semibold text-zinc-800">
+    <Component className="text-base font-semibold text-zinc-800 dark:text-zinc-100">
       {href ? <Card.Link href={href}>{children}</Card.Link> : { children }}
     </Component>
   );
@@ -40,7 +40,7 @@ Card.Link = function CardLink({
 }) {
   return (
     <>
-      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 shadow-sm shadow-zinc-300 transition group-hover:scale-100 group-hover:opacity-100  sm:rounded-2xl" />
+      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 shadow-sm shadow-zinc-300 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 dark:shadow-zinc-700 sm:rounded-2xl" />
       <Link href={href}>
         <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:rounded-2xl" />
         <span className="relative z-10">{children}</span>
@@ -74,7 +74,7 @@ Card.Description = function CardDescription({
   children: React.ReactNode;
 }) {
   return (
-    <Component className="relative z-10 mt-4 text-sm leading-6 text-zinc-600">
+    <Component className="relative z-10 mt-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
       {children}
     </Component>
   );
@@ -88,7 +88,7 @@ Card.Cta = function CardCta({
   children: React.ReactNode;
 }) {
   return (
-    <Component className="relative z-10 mt-4 flex items-center text-sm font-semibold text-zinc-600 group-hover:text-blue-500">
+    <Component className="relative z-10 mt-4 flex items-center text-sm font-semibold text-zinc-600 group-hover:text-blue-500 dark:text-zinc-400">
       {children}
       <ChevronRightIcon className="h-4 w-4 opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100" />
     </Component>

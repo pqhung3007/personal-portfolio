@@ -99,13 +99,13 @@ export default function Projects() {
                   <Image src={logo} alt="name" className="h-8 w-8" />
                 </div>
 
-                <h2 className="mt-6 text-base font-semibold text-zinc-800">
+                <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
                   <Card.Link href={href}>{name}</Card.Link>
                 </h2>
 
                 <Card.Description>{description}</Card.Description>
                 <Card.Cta>
-                  <LinkIcon className="mr-2 h-4 w-4 text-zinc-400 group-hover:text-zinc-600" />
+                  <LinkIcon className="mr-2 h-4 w-4 text-zinc-400 group-hover:text-zinc-600 dark:text-zinc-600 dark:group-hover:text-zinc-400" />
                   {label}
                 </Card.Cta>
               </Card>
