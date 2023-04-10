@@ -13,7 +13,6 @@ import {
 } from "@/components/SocialIcons";
 import { getAllArticles } from "@/utils/getAllArticles";
 
-import portrait from "@/assets/portrait.jpg";
 import image1 from "@/assets/row/image-1.jpg";
 import image2 from "@/assets/row/image-2.jpg";
 import image3 from "@/assets/row/image-3.jpg";
@@ -110,11 +109,6 @@ export default function Home({ articles }: { articles: ArticleMetadata[] }) {
       </Head>
       <Container className="relative mt-10">
         <div className="max-w-2xl">
-          <Image
-            src={portrait}
-            alt="portrait"
-            className="h-16 w-16 rounded-full object-cover ring-1 ring-zinc-300 ring-offset-1"
-          />
           <h1 className="mt-8 text-3xl font-bold tracking-tight text-zinc-700 sm:text-5xl">
             Front-end developer and book enthusiast
           </h1>
