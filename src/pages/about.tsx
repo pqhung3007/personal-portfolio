@@ -67,34 +67,24 @@ export default function About() {
             </h1>
             <div className="mt-8 space-y-6 text-base leading-7 text-zinc-600 dark:text-zinc-400">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-                sequi optio ex quis laboriosam cupiditate vel, libero impedit
-                magni molestiae exercitationem tenetur esse voluptatum
-                perferendis consectetur, quae voluptatem nostrum corrupti!
+                I entered the frontend web development zone in late 2021 and it
+                was by far the best decision of my life. The combination of
+                creativity, problem-solving, and technical skills make me feel
+                more fulfilled and excited when doing frontend coding.
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-                dicta labore ad ipsam ullam consequatur ducimus vel earum, enim
-                temporibus numquam eaque aliquid maiores odio? Ipsa odio eaque
-                saepe, laborum doloribus architecto ab quo error enim provident
-                dolore repellendus nulla.
+                Despite having gained a considerable amount of knowledge,
+                I&apos;m still eager to learn more and more. Backend development
+                and UX design seem appealing, and I would surely put them in my
+                bucket list.
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-                voluptatum deleniti repellendus libero ad neque similique
-                laborum! Fugit facilis necessitatibus praesentium rem, iste
-                nostrum est qui id corrupti nemo vel quis, eius enim ea. Dolorum
-                earum quis ad provident aliquid.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat
-                iste nulla quae autem ut vel sequi repellendus facilis fugit,
-                necessitatibus totam consectetur incidunt cumque dolor
-                doloremque culpa perspiciatis omnis harum. Ducimus, nam.
-                Recusandae illo expedita natus optio laudantium illum reiciendis
-                culpa dolore reprehenderit sed iure veritatis tenetur magnam
-                ipsam soluta architecto, dolores autem aliquam, distinctio non
-                quia accusamus! Culpa, impedit!
+                When I&apos;m not working on a project, I like to spend my time
+                with books. Whether it is about software requirements, project
+                management or UI/UX design, I&apos;m always looking for new ways
+                to dive deeper and finding inspiration from it. Because I
+                believe that by staying knowledgeable, I can help other people
+                to build better products.
               </p>
             </div>
           </div>

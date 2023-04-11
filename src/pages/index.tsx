@@ -113,10 +113,9 @@ export default function Home({ articles }: { articles: ArticleMetadata[] }) {
             Front-end developer and book enthusiast
           </h1>
           <p className="track mt-6 text-base leading-7 tracking-[0.01rem] text-zinc-600 dark:text-zinc-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-            quam at aut, repellat impedit aliquam veniam, labore voluptatibus
-            recusandae est, doloribus unde voluptates itaque porro fugit ipsam
-            fuga? Numquam, ducimus?
+            I&apos;m Quang Hung, a frontend developer and a senior student based
+            in Hanoi, Vietnam. My top priority is to arm myself with the best
+            software knowledge in order to prepare for the future profession.
           </p>
 
           <div className="mt-8 flex gap-4">
