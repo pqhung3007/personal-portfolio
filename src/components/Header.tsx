@@ -140,7 +140,9 @@ function DesktopNavItem({ href, children }: NavItemProps) {
     <Link
       href={href}
       className={`relative block p-3 transition ${
-        isActive ? "text-blue-600" : "text-zinc-800 dark:text-zinc-100"
+        isActive
+          ? "text-blue-600 dark:text-blue-400"
+          : "text-zinc-800 dark:text-zinc-100"
       }`}
     >
       {children}

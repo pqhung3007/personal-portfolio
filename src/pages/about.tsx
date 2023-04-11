@@ -27,9 +27,9 @@ function SocialLink({
     <li className={`flex ${className}`}>
       <Link
         href={href}
-        className="group flex items-center text-sm font-semibold text-zinc-800 transition hover:text-blue-600 dark:text-zinc-300 dark:hover:text-zinc-100"
+        className="group flex items-center text-sm font-semibold text-zinc-800 transition hover:text-blue-600 dark:text-zinc-300 dark:hover:text-blue-400"
       >
-        <Icon className="h-6 w-6 fill-zinc-600 group-hover:fill-blue-500 dark:fill-zinc-200" />
+        <Icon className="h-6 w-6 fill-zinc-600 group-hover:fill-blue-600 dark:fill-zinc-200 dark:group-hover:fill-blue-400" />
         <span className="ml-4">{children}</span>
       </Link>
     </li>
