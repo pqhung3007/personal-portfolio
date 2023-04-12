@@ -1,14 +1,18 @@
 import Head from "next/head";
 import Image from "next/image";
 import { LinkIcon } from "@heroicons/react/24/outline";
+import { motion, AnimatePresence } from "framer-motion";
+
+import { Card } from "@/components/Card";
+import ContentLayout from "@/components/ContentLayout";
+import { cardVariants } from "@/utils/animation";
+
 import logoSpeaker from "@/assets/logos/speaker.svg";
 import logoPainting from "@/assets/logos/painting.svg";
 import logoClock from "@/assets/logos/clock.svg";
 import logoQuiz from "@/assets/logos/quiz.svg";
 import logoRecorder from "@/assets/logos/film-recorder.svg";
 import logoNote from "@/assets/logos/note.svg";
-import { Card } from "@/components/Card";
-import ContentLayout from "@/components/ContentLayout";
 
 export default function Projects() {
   const projects = [
@@ -86,31 +90,41 @@ export default function Projects() {
         intro="Welcome to my project showcase, where I highlight some of my favorite mini projects that showcase my skills in web development and design, giving you a glimpse into my creative process and the passion I bring to each project"
       >
         <ul className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => {
-            const {
-              name,
-              description,
-              link: { label, href },
-              logo,
-            } = project;
-            return (
-              <Card as="li" key={name}>
-                <div className="relative z-20 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-900/10">
-                  <Image src={logo} alt="name" className="h-8 w-8" />
-                </div>
+          <AnimatePresence>
+            {projects.map((project) => {
+              const {
+                name,
+                description,
+                link: { label, href },
+                logo,
+              } = project;
+              return (
+                <motion.div
+                  key={name}
+                  variants={cardVariants}
+                  initial="initial"
+                  animate="animate"
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >
+                  <Card as="li">
+                    <div className="relative z-20 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-900/10">
+                      <Image src={logo} alt="name" className="h-8 w-8" />
+                    </div>
 
-                <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                  <Card.Link href={href}>{name}</Card.Link>
-                </h2>
+                    <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+                      <Card.Link href={href}>{name}</Card.Link>
+                    </h2>
 
-                <Card.Description>{description}</Card.Description>
-                <Card.Cta>
-                  <LinkIcon className="mr-2 h-4 w-4 text-zinc-400 group-hover:text-zinc-600 dark:text-zinc-600 dark:group-hover:text-zinc-400" />
-                  {label}
-                </Card.Cta>
-              </Card>
-            );
-          })}
+                    <Card.Description>{description}</Card.Description>
+                    <Card.Cta>
+                      <LinkIcon className="mr-2 h-4 w-4 text-zinc-400 group-hover:text-zinc-600 dark:text-zinc-600 dark:group-hover:text-zinc-400" />
+                      {label}
+                    </Card.Cta>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </ul>
       </ContentLayout>
     </>

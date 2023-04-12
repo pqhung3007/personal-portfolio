@@ -1,7 +1,10 @@
+import Head from "next/head";
+import { motion } from "framer-motion";
+
 import Article from "@/components/Article";
 import ContentLayout from "@/components/ContentLayout";
 import { getAllArticles } from "@/utils/getAllArticles";
-import Head from "next/head";
+import { cardVariants } from "@/utils/animation";
 
 interface ArticleMetadata {
   title: string;
@@ -30,7 +33,15 @@ export default function ArticleIndex({
       >
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-12 lg:max-w-none lg:grid-cols-3">
           {articles.map((article) => (
-            <Article key={article.slug} article={article} />
+            <motion.div
+              key={article.slug}
+              variants={cardVariants}
+              initial="initial"
+              animate="animate"
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <Article article={article} />
+            </motion.div>
           ))}
         </div>
       </ContentLayout>

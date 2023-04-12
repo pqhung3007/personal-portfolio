@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import Skills from "@/components/Skills";
 import Article from "@/components/Article";
@@ -12,6 +13,7 @@ import {
   FacebookIcon,
 } from "@/components/SocialIcons";
 import { getAllArticles } from "@/utils/getAllArticles";
+import { headingVariants } from "@/utils/animation";
 
 import image1 from "@/assets/row/image-1.jpg";
 import image2 from "@/assets/row/image-2.jpg";
@@ -108,7 +110,13 @@ export default function Home({ articles }: { articles: ArticleMetadata[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container className="relative mt-10">
-        <div className="max-w-2xl">
+        <motion.div
+          className="max-w-2xl"
+          variants={headingVariants}
+          initial="initial"
+          animate="animate"
+          transition={{ duration: 1 }}
+        >
           <h1 className="mt-8 text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Front-end developer and book enthusiast
           </h1>
@@ -136,7 +144,7 @@ export default function Home({ articles }: { articles: ArticleMetadata[] }) {
               icon={LinkedInIcon}
             />
           </div>
-        </div>
+        </motion.div>
       </Container>
       <PhotosRow />
 
