@@ -49,7 +49,7 @@ export default function Header() {
           <div className="flex justify-end md:flex-1">
             <button
               aria-label="Toggle dark mode"
-              className="ring1 rounded-full bg-white px-3 py-2 shadow-md shadow-zinc-800/5 ring-zinc-200 dark:bg-zinc-700"
+              className="rounded-full bg-white px-3 py-2 shadow-md shadow-zinc-800/5 dark:bg-zinc-700"
               onClick={handleSetTheme}
             >
               <SunIcon className="h-6 w-6 text-zinc-500 dark:hidden" />
