@@ -1,12 +1,6 @@
+import { ArticleMetadata } from "@/utils/types";
 import { Card } from "./Card";
 import { formatDate } from "@/utils/formatDate";
-
-interface ArticleMetadata {
-  title: string;
-  description: string;
-  date: string;
-  slug: string;
-}
 
 export default function Article({ article }: { article: ArticleMetadata }) {
   return (

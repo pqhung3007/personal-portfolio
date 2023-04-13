@@ -14,19 +14,13 @@ import {
 } from "@/components/SocialIcons";
 import { getAllArticles } from "@/utils/getAllArticles";
 import { headingVariants } from "@/utils/animation";
+import { ArticleMetadata } from "@/utils/types";
 
 import image1 from "@/assets/row/image-1.jpg";
 import image2 from "@/assets/row/image-2.jpg";
 import image3 from "@/assets/row/image-3.jpg";
 import image4 from "@/assets/row/image-4.jpg";
 import image5 from "@/assets/row/image-5.jpg";
-
-interface ArticleMetadata {
-  title: string;
-  description: string;
-  date: string;
-  slug: string;
-}
 
 function PhotosRow() {
   let rotations = [

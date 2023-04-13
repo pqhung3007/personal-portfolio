@@ -5,13 +5,7 @@ import Article from "@/components/Article";
 import ContentLayout from "@/components/ContentLayout";
 import { getAllArticles } from "@/utils/getAllArticles";
 import { cardVariants } from "@/utils/animation";
-
-interface ArticleMetadata {
-  title: string;
-  description: string;
-  date: string;
-  slug: string;
-}
+import { ArticleMetadata } from "@/utils/types";
 
 export default function ArticleIndex({
   articles,
