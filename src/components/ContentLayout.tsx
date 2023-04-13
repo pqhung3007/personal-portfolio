@@ -1,12 +1,7 @@
+import { headingVariants } from "@/utils/animation";
+import { LayoutProps } from "@/utils/types";
 import { motion } from "framer-motion";
 import Container from "./Container";
-import { headingVariants } from "@/utils/animation";
-
-interface LayoutProps {
-  title: string;
-  intro: string;
-  children: React.ReactNode;
-}
 
 export default function ContentLayout({ title, intro, children }: LayoutProps) {
   return (

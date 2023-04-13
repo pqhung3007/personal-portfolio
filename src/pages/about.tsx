@@ -1,23 +1,17 @@
-import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import portraitImage from "@/assets/portrait.jpg";
+import Container from "@/components/Container";
 import {
+  FacebookIcon,
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
-  FacebookIcon,
 } from "@/components/SocialIcons";
-import Container from "@/components/Container";
-import portraitImage from "@/assets/portrait.jpg";
-import { headingVariants, cardVariants } from "@/utils/animation";
-
-interface SocialLinkProps {
-  href: string;
-  icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  className?: string;
-  children?: React.ReactNode;
-}
+import { cardVariants, headingVariants } from "@/utils/animation";
+import { SocialLinkProps } from "@/utils/types";
+import { AnimatePresence, motion } from "framer-motion";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 
 function SocialLink({
   href,

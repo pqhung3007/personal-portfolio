@@ -1,6 +1,6 @@
+import { formatDate } from "@/utils/formatDate";
 import { ArticleMetadata } from "@/utils/types";
 import { Card } from "./Card";
-import { formatDate } from "@/utils/formatDate";
 
 export default function Article({ article }: { article: ArticleMetadata }) {
   return (

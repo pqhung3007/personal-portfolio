@@ -1,10 +1,10 @@
-import Head from "next/head";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 import Article from "@/components/Article";
 import ContentLayout from "@/components/ContentLayout";
-import { getAllArticles } from "@/utils/getAllArticles";
 import { cardVariants } from "@/utils/animation";
+import { getAllArticles } from "@/utils/getAllArticles";
 import { ArticleMetadata } from "@/utils/types";
 
 export default function ArticleIndex({

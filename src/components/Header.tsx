@@ -1,8 +1,8 @@
-import { Fragment } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { useRouter } from "next/router";
 import { Popover, Transition } from "@headlessui/react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { Fragment } from "react";
 import Container from "./Container";
 
 import portrait from "@/assets/portrait.jpg";

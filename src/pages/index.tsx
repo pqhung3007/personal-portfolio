@@ -1,19 +1,19 @@
+import { motion } from "framer-motion";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
-import Skills from "@/components/Skills";
 import Article from "@/components/Article";
 import Container from "@/components/Container";
+import Skills from "@/components/Skills";
 import {
+  FacebookIcon,
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
-  FacebookIcon,
 } from "@/components/SocialIcons";
-import { getAllArticles } from "@/utils/getAllArticles";
 import { headingVariants } from "@/utils/animation";
+import { getAllArticles } from "@/utils/getAllArticles";
 import { ArticleMetadata } from "@/utils/types";
 
 import image1 from "@/assets/row/image-1.jpg";

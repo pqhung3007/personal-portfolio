@@ -1,18 +1,18 @@
+import { LinkIcon } from "@heroicons/react/24/outline";
+import { AnimatePresence, motion } from "framer-motion";
 import Head from "next/head";
 import Image from "next/image";
-import { LinkIcon } from "@heroicons/react/24/outline";
-import { motion, AnimatePresence } from "framer-motion";
 
 import { Card } from "@/components/Card";
 import ContentLayout from "@/components/ContentLayout";
 import { cardVariants } from "@/utils/animation";
 
-import logoSpeaker from "@/assets/logos/speaker.svg";
-import logoPainting from "@/assets/logos/painting.svg";
 import logoClock from "@/assets/logos/clock.svg";
-import logoQuiz from "@/assets/logos/quiz.svg";
 import logoRecorder from "@/assets/logos/film-recorder.svg";
 import logoNote from "@/assets/logos/note.svg";
+import logoPainting from "@/assets/logos/painting.svg";
+import logoQuiz from "@/assets/logos/quiz.svg";
+import logoSpeaker from "@/assets/logos/speaker.svg";
 
 export default function Projects() {
   const projects = [

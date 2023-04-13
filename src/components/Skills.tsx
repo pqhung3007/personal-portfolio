@@ -1,6 +1,8 @@
+import {
+  DocumentArrowDownIcon,
+  PaintBrushIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { PaintBrushIcon } from "@heroicons/react/24/outline";
-import { DocumentArrowDownIcon } from "@heroicons/react/24/outline";
 
 import logoBootstrap from "@/assets/logos/bootstrap.svg";
 import logoCss from "@/assets/logos/css.svg";
