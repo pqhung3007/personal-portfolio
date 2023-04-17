@@ -1,0 +1,144 @@
+import Image from "next/image";
+import { ArticleLayout } from "@/components/ArticleLayout";
+import detachedHead from "./detached-head.png";
+import rebasing from "./rebasing.png";
+
+export const metadata = {
+  date: "2023-04-02",
+  title: "Git Essentials: 5 Operations You Wish You Knew Sooner",
+  description:
+    "Some essential Git operations that can help streamline your development workflow and improve your productivity. From merging and rebasing to stashing, learn how these operations can save you time and headaches in your Git projects.",
+};
+
+export default ({ children }) => (
+  <ArticleLayout metadata={metadata}>{children}</ArticleLayout>
+);
+
+# Git Essentials: 5 Operations You Wish You Knew Sooner
+
+## Giới thiệu
+
+Nếu bạn đang trên hành trình trở thành một developer, khả năng cao là bạn đã từng sử dụng Git - hệ thống quản lý phiên bản code (Version Control System) phổ biến nhất hiện nay. Ngoài những lệnh cơ bản như `git add`, `git commit`, `git push`, `git pull`, trong bài viết này, mình sẽ giới thiệu 5 lệnh Git đặc biệt mà bạn ước rằng mình biết sớm hơn để tối ưu hóa trải nghiệm code của các bạn. Biết muộn còn hơn không biết, vậy cùng tìm hiểu thôi!
+
+| Nội dung bài viết |
+| ----------------- |
+
+1. Git Diff - đưa 2 thứ lên bàn cân
+2. Git Log --oneline - nhìn lịch sử thay đỔi bằng cách ngắn gọn hơn
+3. Git Stash - kho chứa tạm hữu ích
+4. Du hành thời gian với Git Checkout
+5. Git Rebase - khi tất cả hòa làm một
+
+## 1. Git Diff
+
+Chúng ta có thể sử dụng lệnh "git diff" để so sánh sự thay đổi giữa các commit, nhánh, file và nhiều thứ khác nữa!
+
+### So sánh giữa 2 commit
+
+Để so sánh giữa 2 commit, chúng ta cần cung cấp commit hashes của 2 commit cần so sánh. Ví dụ
+
+```bash
+git diff 0b4c3d 0b4c3d
+diff --git a/src/utils/types.ts b/src/utils/types.ts
+index 1e94825..61dbb12 100644
+--- a/src/utils/types.ts
++++ b/src/utils/types.ts
+@@ -4,16 +4,3 @@ export interface ArticleMetadata {
+   date: string;
+   slug: string;
+ }
+-
+-export interface SocialLinkProps {
+-  href: string;
+-  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+-  className?: string;
+-  children?: React.ReactNode;
+-}
+-
+```
+
+### So sánh giữa 2 files
+
+Cho mỗi phép so sánh, Git sẽ giải thích nó đang so sánh giữa 2 files nào, thường được gọi là A và B
+
+```bash
+diff --git a/src/utils/types.ts b/src/utils/types.ts
+index 1e94825..61dbb12 100644
+--- a/src/utils/types.ts
++++ b/src/utils/types.ts
+@@ -3,4 +3,5 @@ orange
+yellow
+green
+blue
+- purple
++ indigo
++ violet
+```
+
+## 2. Git Log --oneline
+
+Nếu bạn muốn xem mình đã làm gì trong repository, nhưng lại không muốn phải cuộn chuột liên tục qua các commit cùng đầy đủ các mô tả về ngày, người commit, etc.. hãy thêm `--oneline` vào đằng sau câu lệnh git log nhé!
+
+```bash
+git log --oneline
+0029e73 (HEAD -> main, origin/main) refactor: reorganize import statements
+9e2ce9d feat: add support for toggling dark mode
+```
+
+## 3. Git Stash
+
+Hãy tưỞng tượng bạn rẽ nhánh từ `main` sang `feat/dark-mode` rồi thực hiện một vài sự thay đổi ở đó. Tuy nhiên, bạn cảm thấy có điều gì đó chưa ổn và muốn quay lại `main` ngó qua xem sao, nhưng đồng thời cũng chưa muốn commit ở nhánh `feat/dark-mode` vì code ở đây chưa được "sạch". Đừng lo, Git Stash đến ngay đây!
+
+```bash
+git stash
+Saved working directory and index state WIP on feat/dark-mode: 9e2ce9d feat: add support for toggling dark mode
+HEAD is now at 9e2ce9d feat: add support for toggling dark mode
+```
+
+Rồi, tất cả code hiện tại của bạn sẽ được đưa vào "kho chứa tạm". Yên tâm là chúng sẽ không mất đi đâu cả. Hơn nữa, khi bạn đã yên tâm về `main`, bạn hoàn toàn có thể vào chiếc kho chứa này và lấy ra những gì bạn đã stash
+
+```bash
+git stash pop
+```
+
+Còn một số lệnh nhỏ liên quan đến stashing nữa, nhưng thú thực đến 99% mình chỉ dùng 2 câu lệnh này thôi. Đây cũng là câu lệnh mình cảm thấy bản thân cần nhất đấy :3
+
+## 4. Git Checkout
+
+Có lẽ bạn đã sử dụng lệnh này trong việc tạo nhánh mới hoặc chuyển nhánh. Tuy nhiên, git checkout còn có những khả năng đặc biệt khác là khôi phục files và giúp chúng ta du hành ngược về quá khứ nữa đấy.
+
+```bash
+git checkout 9e2ce9d
+```
+
+Với câu lệnh trên, bạn sẽ được quay về commit `9e2ce9d` và xem source code ở thời điểm đó. Lúc này, bạn sẽ ở trạng thái **detached HEAD** . Nhưng từ từ, khoan hãy hoang mang, để mình giải thích bằng hình vẽ dưới đây:
+
+<Image src={detachedHead} alt="" />
+*Nguồn: The Git & Github Bootcamp - Colt Steele on Udemy*
+
+Về cơ bản HEAD sẽ trỏ tới tham chiếu của một nhánh nhất định thay vì một commit. Nhưng trong trường hợp này, chúng ta tạm thời "tách" HEAD để trỏ tới commit trong quá khứ. Đến khi muốn quay trở về hiện tại và "gắn liền" chiếc đầu lại, chúng ta sẽ dùng lệnh `git switch master` với master là tên nhánh mà HEAD đang trỏ tới là xong!
+
+## 5. Git Rebase
+
+Thật lòng mà nói, trước đây mình từng rất `git rebase` vì cơ bản mình...chả biết dùng thế nào cả, nhỡ đâu gõ một lệnh mà mess up cả repo thì toi. Tuy nhiên, sau khi tham khảo nhiều nguồn với những sơ đồ được hình tưởng hóa cùng với quá trình tự demo, mình đã cảm thấy tự tin hơn nhiều trong việc thao tác với nó.
+
+Về cơ bản, `git rebase` có 2 tác dụng:
+
+- Là một giải pháp thay thế cho `git merge`
+- Là một công cụ "làm sạch" lịch sử commit
+
+Trong quá trình làm việc nhóm, có lẽ bạn đã rơi vào trường hợp khi bản thân đang làm việc trên nhánh `feat`, nhánh `develop` đã được thay đổi. Bạn merge `develop` vào `feature`. Rồi khi cả 2 nhánh trên đều có thêm thay đổi, bạn lại thực hiện quá trình lần nữa, thêm lần nữa,... dẫn đến việc commit history vô cùng rối rắm. Đã đến lúc nhờ `git rebase` rồi.
+
+```bash
+git switch feat
+git rebase develop
+```
+
+Với câu lệnh trên, nhánh `feat` sẽ được di chuyển và đặt ở đầu nhánh `develop`. Tất nhiên là code của bạn vẫn ở đó an toàn, nhưng chúng ta đã "viết lại lịch sử" thành một phiên bản gọn gàng hơn.
+
+<Image src={rebasing} alt="" />
+*Nguồn: The Git & Github Bootcamp - Colt Steele on Udemy*
+
+## Lời kết
+
+Vậy là xong! Mình đã giới thiệu cho các bạn 5 lệnh Git mình cảm thấy mới lạ nhưng lại rất hữu ích trong quá trình làm việc của bản thân. Chắc chắn sẽ có những thứ hay ho khác xung quanh Git mà mình chưa khám phá ra. Nếu bạn đã tìm tòi và mong muốn chia sẻ với mình, đừng ngại ngần liên hệ với mình qua facebook [Phạm Quang Hưng](https://www.facebook.com/hung.pq3007/) nhé. Cảm ơn các bạn đã đọc bài viết của mình!
