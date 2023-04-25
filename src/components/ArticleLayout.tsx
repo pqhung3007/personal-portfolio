@@ -42,7 +42,9 @@ export function ArticleLayout({
             <span className="ml-2">{formatDate(metadata.date)}</span>
           </div>
         </header>
-        <article className="prose mt-8 dark:prose-invert">{children}</article>
+        <article className="prose mt-8 dark:prose-invert prose-img:rounded-lg">
+          {children}
+        </article>
 
         <button
           type="button"
