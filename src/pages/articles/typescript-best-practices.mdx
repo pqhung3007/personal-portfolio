@@ -1,0 +1,123 @@
+import { ArticleLayout } from "../../components/ArticleLayout";
+
+export const metadata = {
+  date: "2023-05-25",
+  title: "TypeScript Best Practices: Writing better code",
+  description:
+    "TypeScript là một phiên bản mạnh mẽ hơn của JavaScript với việc được cung cấp static typing, lớp theo kiểu lập trình hướng đối tượng và những tính năng khác. Để tận dụng tối đa sức mạnh của TypeScript, sẽ có những quy chuẩn mà chúng ta nên tuân theo.",
+};
+
+export default ({ children }) => (
+  <ArticleLayout metadata={metadata}>{children}</ArticleLayout>
+);
+
+# TypeScript Best Practices: Writing Better Code
+
+TypeScript là một phiên bản mạnh mẽ hơn của JavaScript với việc được cung cấp static typing, lớp theo kiểu lập trình hướng đối tượng và những tính năng khác. Chính những điều này đã khiến nó trở thành sự lựa chọn tuyệt vời cho các dự án lớn. Tuy nhiên, để tận dụng tối đa sức mạnh của TypeScript, sẽ có những quy chuẩn mà chúng ta nên tuân theo.
+
+1.
+
+## 1. Sử dụng tên biến và tên hàm có ý nghĩa
+
+```tsx
+// Bad:
+let x = 5;
+function temp(a: number, b: number): number {
+  return a + b;
+}
+
+// Good:
+let numberOfStudents = 5;
+function calculateSumOfTwoNumbers(
+  firstNumber: number,
+  secondNumber: number
+): number {
+  return firstNumber + secondNumber;
+}
+```
+
+Việc thống nhất sử dụng một quy chuẩn đặt tên (naming convention) sẽ giúp cho những người làm việc cùng bạn có thể dễ dàng hiểu code và đóng góp vào dự án hơn nhiều. Ngược lại, nếu mỗi thành viên trong một nhóm sử dụng một cách đặt tên mơ hồ, thiếu rõ ràng thì những người còn lại sẽ khá bối rối để làm việc cùng.
+
+## 2. Sử dụng Interfaces
+
+Interface cho phép bạn định nghĩa cấu trúc của một object và đảm bảo các objects trong code match với cấu trúc đó. Hơn nữa, khi một hàm truyền vào tham số là một object, việc sử dụng Interfaces vừa giúp định nghĩa hình thái của object, vừa khiến code trở nên dễ đọc hơn.
+
+```tsx
+// Bad:
+function printFullName(person: { firstName: string; lastName: string }): void {
+  console.log(`${person.firstName} ${person.lastName}`);
+}
+
+// Good:
+interface Person {
+  firstName: string;
+  lastName: string;
+}
+
+function printFullName(person: Person): void {
+  console.log(`${person.firstName} ${person.lastName}`);
+}
+```
+
+## 3. Tránh sử dụng type “any” ❌
+
+Kiểu dữ liệu any có thể dùng để “lách” qua hệ thống type checking của TypeScript, kiểu như rằng một biến có thể có đa hình thái giống JavaScript. Tuy nhiên, nó không nên bị lạm dụng vì có thể gây nên một số bugs ngoài mong đợi và khiến việc hiểu cấu trúc code trở nên khó hơn. Thay vì vậy, tốt nhất là chúng ta nên định nghĩa kiểu biến hoặc object một cách tường minh nhất.
+
+```tsx
+// Bad:
+function multiply(a: any, b: any): any {
+  return a * b;
+}
+
+const result = multiply("2", 3); // This will result in a runtime error
+```
+
+## 4. Sử dụng Enums
+
+Enums, viết tắt của enumerations, được dùng để định nghĩa tập hợp những hằng số có tên. Việc sử dụng nó có thể cải thiện tính dễ đọc của code thông qua việc biểu diễn tập giá trị một cách rõ ràng.
+
+```tsx
+// Bad:
+const DaysOfWeek = {
+  Monday: 1,
+  Tuesday: 2,
+  Wednesday: 3,
+  Thursday: 4,
+  Friday: 5,
+  Saturday: 6,
+  Sunday: 7,
+};
+
+// Good:
+enum DaysOfWeek {
+  Monday = 1,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
+let goodDay: DaysOfWeek = DaysOfWeek.Friday;
+```
+
+## 5. Tránh việc sử dụng type assertions
+
+Hãy cẩn thận với type assertions nhé. Chúng có thể dẫn đến lỗi runtime không ngờ đến nếu khai báo không chính xác. Thay vào đó, hãy sử dụng type annotations để bắt được lỗi từ trong IDE
+
+```tsx
+// Bad:
+const example: any = "This can be any type";
+const exampleLength = (example as string).length;
+
+// Good:
+const example: string = "This is a string";
+const exampleLength = example.length;
+```
+
+## Lời kết:
+
+Trên đây mình đã liệt kê một số cách tốt nhất theo kinh nghiệm cá nhân để tận dụng sức mạnh mà TypeScript đem lại và tạo nên những dòng code dễ bảo trì, chắc chắn hơn.
+
+Tuy nhiên, sẽ còn nhiều phương pháp hay khác và hơn nữa, nó còn phụ thuộc vào quy mô và yêu cầu dự án. Hãy coi những điều trong bài viết là nền tảng để có để ngày một thành thạo TypeScript hơn nhé!
