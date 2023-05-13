@@ -135,7 +135,7 @@ function MobileNavigation(props: { className?: string }) {
 }
 
 function DesktopNavItem({ href, children }: NavItemProps) {
-  let isActive = useRouter().pathname === href;
+  let isActive = useRouter().pathname.split("/")[1] === href.split("/")[1];
   return (
     <Link
       href={href}
