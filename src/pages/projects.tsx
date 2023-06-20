@@ -11,21 +11,10 @@ import logoClock from "@/assets/logos/clock.svg";
 import logoRecorder from "@/assets/logos/film-recorder.svg";
 import logoNote from "@/assets/logos/note.svg";
 import logoPainting from "@/assets/logos/painting.svg";
-import logoQuiz from "@/assets/logos/quiz.svg";
 import logoSpeaker from "@/assets/logos/speaker.svg";
 
 export default function Projects() {
   const projects = [
-    {
-      name: "Jemember",
-      description:
-        "The flashcard-based learning app that helps you memorize crucial knowledge.",
-      link: {
-        href: "https://jemember.jsclub.tech/",
-        label: "jemember.jsclub.tech",
-      },
-      logo: logoQuiz,
-    },
     {
       name: "Dev Notes",
       description:
