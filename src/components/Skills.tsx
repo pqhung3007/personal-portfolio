@@ -1,86 +1,86 @@
 import {
   DocumentArrowDownIcon,
   PaintBrushIcon,
-} from "@heroicons/react/24/outline";
-import Image from "next/image";
+} from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
-import logoBootstrap from "@/assets/logos/bootstrap.svg";
-import logoCss from "@/assets/logos/css.svg";
-import logoFigma from "@/assets/logos/figma.svg";
-import logoFirebase from "@/assets/logos/firebase.svg";
-import logoGit from "@/assets/logos/git.svg";
-import logoHtml from "@/assets/logos/html.svg";
-import logoJavascript from "@/assets/logos/javascript.svg";
-import logoJest from "@/assets/logos/jest.svg";
-import logoMysql from "@/assets/logos/mysql.svg";
-import logoNext from "@/assets/logos/nextjs.svg";
-import logoNpm from "@/assets/logos/npm.svg";
-import logoReact from "@/assets/logos/react.svg";
-import logoRedux from "@/assets/logos/redux.svg";
-import logoTailwind from "@/assets/logos/tailwind.svg";
-import logoTypeScript from "@/assets/logos/typescript.svg";
+import logoBootstrap from '@/assets/logos/bootstrap.svg';
+import logoCss from '@/assets/logos/css.svg';
+import logoFigma from '@/assets/logos/figma.svg';
+import logoFirebase from '@/assets/logos/firebase.svg';
+import logoGit from '@/assets/logos/git.svg';
+import logoHtml from '@/assets/logos/html.svg';
+import logoJavascript from '@/assets/logos/javascript.svg';
+import logoJest from '@/assets/logos/jest.svg';
+import logoMysql from '@/assets/logos/mysql.svg';
+import logoNext from '@/assets/logos/nextjs.svg';
+import logoNpm from '@/assets/logos/npm.svg';
+import logoReact from '@/assets/logos/react.svg';
+import logoRedux from '@/assets/logos/redux.svg';
+import logoTailwind from '@/assets/logos/tailwind.svg';
+import logoTypeScript from '@/assets/logos/typescript.svg';
 
 export default function Skills() {
   let skills = [
     // the skill list includes HTML, CSS, JS, React, TypeScript, Tailwind, etc. Each item contain a name and a logo
     {
-      name: "HTML",
+      name: 'HTML',
       logo: logoHtml,
     },
     {
-      name: "CSS",
+      name: 'CSS',
       logo: logoCss,
     },
     {
-      name: "TypeScript",
+      name: 'TypeScript',
       logo: logoTypeScript,
     },
     {
-      name: "JavaScript",
+      name: 'JavaScript',
       logo: logoJavascript,
     },
     {
-      name: "React",
+      name: 'React',
       logo: logoReact,
     },
     {
-      name: "Next.js",
+      name: 'Next.js',
       logo: logoNext,
     },
     {
-      name: "Redux",
+      name: 'Redux',
       logo: logoRedux,
     },
     {
-      name: "TailwindCSS",
+      name: 'TailwindCSS',
       logo: logoTailwind,
     },
     {
-      name: "Bootstrap",
+      name: 'Bootstrap',
       logo: logoBootstrap,
     },
     {
-      name: "Jest",
+      name: 'Jest',
       logo: logoJest,
     },
     {
-      name: "NPM",
+      name: 'NPM',
       logo: logoNpm,
     },
     {
-      name: "Git",
+      name: 'Git',
       logo: logoGit,
     },
     {
-      name: "MySQL",
+      name: 'MySQL',
       logo: logoMysql,
     },
     {
-      name: "Firebase",
+      name: 'Firebase',
       logo: logoFirebase,
     },
     {
-      name: "Figma",
+      name: 'Figma',
       logo: logoFigma,
     },
   ];
@@ -99,7 +99,7 @@ export default function Skills() {
       <ol className="mt-4 grid grid-cols-5 gap-y-4">
         {skills.map((skill, skillIndex) => (
           <li key={skillIndex}>
-            <div className="group relative h-12 w-12 flex-none items-center justify-center rounded-full p-2 shadow-md ring-1 ring-zinc-100 dark:ring-zinc-700">
+            <div className="group relative h-12 w-12 flex-none items-center justify-center rounded-full p-2 shadow-md ring-1 ring-zinc-100 dark:ring-zinc-800">
               <Image src={skill.logo} alt={skill.name} />
               <span className="pointer-events-none absolute -top-8 left-0 rounded bg-zinc-800 px-2 py-1 text-sm text-zinc-100 opacity-0 transition-opacity group-hover:opacity-100">
                 {skill.name}
@@ -110,9 +110,9 @@ export default function Skills() {
       </ol>
 
       <a
-        className="group mt-6 inline-flex w-full items-center justify-center rounded-md bg-zinc-50 p-3 text-sm font-semibold text-zinc-800 transition hover:bg-zinc-100 active:text-zinc-800/60 dark:bg-zinc-700 dark:text-zinc-200 dark:hover:text-zinc-100"
+        className="group mt-6 inline-flex w-full items-center justify-center rounded-md bg-zinc-100 p-3 text-sm font-semibold text-zinc-800 transition hover:bg-zinc-200 active:text-zinc-800/60 dark:bg-zinc-800/80 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
         href="/files/MyCV.pdf"
-        target={"_blank"}
+        target={'_blank'}
         download
       >
         Download CV
