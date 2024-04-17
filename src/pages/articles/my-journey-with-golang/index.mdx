@@ -1,0 +1,319 @@
+import Image from "next/image";
+import { ArticleLayout } from "@/components/ArticleLayout";
+import thread from "./thread.webp";
+
+export const metadata = {
+  date: "2024-03-12",
+  title: 'Hành trình sát cánh với "người bạn mới" Golang',
+  description:
+    "Cảm nhận của mình qua gần 1 năm tiếp xúc và làm việc với ngôn ngữ này. Cái gì xa lạ rồi cũng thành quen thôi nhỉ?",
+};
+
+export default ({ children }) => (
+  <ArticleLayout metadata={metadata}>{children}</ArticleLayout>
+);
+
+# Hành trình sát cánh với "người bạn" mới Golang
+
+Xuất phát điểm 1 front-end developer, mình dần bắt nhịp được với vai trò của 1 fullstack developer tại công ty. Và đối tượng đầu tiên chạm mặt mình một cách chính thức chính là Golang. Càng tìm hiểu dần dần, mình càng thấy nó có nhiều điểm hay và cảm thấy may mắn khi có cơ hội sử dụng này. Mình xin được đưa ra những điều thú vị về Go theo quản điểm cá nhân để giúp các bạn có thể làm rõ hơn định hướng của mình khi tìm hiểu về back-end nhé.
+
+## 1. Cú pháp đơn giản
+Khi mới bắt đầu code Go, mình thấy nó cứ giống JavaScript/TypeScript vậy, nhưng là phiên bản đơn giản hơn một chút. Chính vì thế, việc nằm lòng syntax của Go đã không tốn của mình quá 1 tiếng đồng hồ. Cảm giác học được một thứ gì đó nhanh cũng đem lại cảm giác dễ chịu đấy chứ.
+
+**Khai báo biến**
+```
+// Sử dụng var
+var age int
+age = 30
+
+// Short variable declaration
+name := "John"
+```
+
+**Khai báo hàm**
+```
+// Hàm không tham số và không giá trị trả về
+func hello() {
+    fmt.Println("Hello, World!")
+}
+
+// Hàm với tham số và giá trị trả về (giống TS phết nhỉ)
+func add(a, b int) int {
+    return a + b
+}
+```
+
+**Cấu trúc điều kiện và vòng lặp**
+: Khi bắt đầu học 1 ngôn ngữ mới, mình thường vô thức so sánh nó với những thứ mình đã có kinh nghiệm, và so sánh xem nó có những điểm gì hay hơn. Và điều đặc biệt mình phát hiện ở Go là, nó không hề có `while`, `do-while`. Chỉ đơn giản là `for`, kèm một logic gì đó thôi
+```
+// Cấu trúc điều kiện if-else (không cần có ngoặc)
+if age >= 10 {
+    fmt.Println("Bạn đã đủ tuổi học code.")
+} else {
+    fmt.Println("Bạn chưa đủ tuổi đâu.")
+}
+
+// Vòng lặp for
+for i := 0; i < 5; i++ {
+    fmt.Println(i)
+}
+
+i := 0
+    for {
+        fmt.Println(i)
+        i++
+        if i >= 5 {
+            break // dừng lại khi i chạm đến 5
+        }
+    }
+```
+
+## 2. Trả về nhiều giá trị
+
+Về khoản này, mình thấy Go đã bắt đầu nổi bật hơn so với những ngôn ngữ khác như Java, JavaScript rồi. Tính năng này rất phù hợp khi 1 hàm muốn trả về cả kết quả, lẫn error để biết được phép toán có thành công hay không. Ngược lại, ví dụ như với JavaScript, mình sẽ phải "chịu khó" trả về 1 object nếu muốn đạt được kết quả tương tự
+> Golang
+```
+func divide(dividend, divisor float64) (float64, error) {
+    if divisor == 0 {
+        return 0, errors.New("cannot divide by zero")
+    }
+    result := dividend / divisor
+    return result, nil
+}
+```
+
+> JavaScript. Các bạn thấy sự khác biệt rồi chứ?
+```
+function divide(dividend, divisor) {
+    if (divisor === 0) {
+        return { result: 0, error: "Cannot divide by zero" };
+    }
+    const result = dividend / divisor;
+    return { result: result, error: null };
+}
+```
+
+## 3. Goroutine
+Goroutines là một trong những tính năng đặc biệt nhất của Golang để lập trình Concurrency cực kỳ đơn giản. Nó bản chất là các hàm (function) hay method được thực thi một các độc lập và đồng thời nhưng vẫn có thể kết nối với nhau. 
+
+Về định nghĩa thì các bạn có thể tìm hiểu thêm ở trang doc chính thức [A tour of Go](https://go.dev/tour/concurrency/1) nhé. Ở đây, mình xin đưa ra nhanh một hình minh họa để cho thấy, Goroutine mạnh như thế nào
+<Image src={thread} alt="" />
+
+- Goroutines có kích thước nhỏ hơn rất đáng kể so với Thread. Goroutines sử dụng **2KB** memory stack, trong khi đó các OS Thread lên đến 2MB.
+- Một chương trình Golang có thể có hàng trăm nghìn Goroutine trong khi Thread chỉ được vài trăm đến hàng nghìn.
+
+Bây giờ hãy cùng đi vào ví dụ nhé. Hãy lưu ý, hàm `main` cũng được tính là 1 goroutine đó
+```
+func count() {
+	for i := 0; i <= 5; i++ {
+		fmt.Printf("Hello %s\n", 1)
+	}
+}
+
+func main() {
+	// Goroutine
+	go count()
+
+	// hàm thường
+	count()
+
+  /* vì main goroutine khi kết thúc sẽ thoát chương trình, 
+    nên chúng ta phải cho sleep 1s để kết quả của count goroutine được hiển thị
+  */
+	time.Sleep(time.Second)
+}
+```
+
+## 4. Đi xa hơn với các framework
+Với Go, sẽ có rất nhiều tùy chọn framework các bạn có thể bắt đầu học hỏi. Với cá nhân mình, Gin là sự lựa chọn yêu thích cho việc tạo ra các API và xử lý routing, vì nó có cú pháp đơn giản, ít boilerplate và sở hữu nguồn tài liệu tham khảo dồi dào.
+
+Dưới đây, mình xin có 1 ví dụ đơn giản về việc tạo 1 API CRUD với Gin. Ngoài ra, GORM - 1 công cụ object mapping cho phép tối giản hóa các thao tác với SQL cũng được sử dụng. Các bạn có thể tìm hiểu thêm thông qua [Gin Web Framework](https://gin-gonic.com/docs/) và [GORM](https://gorm.io/index.html) nhé.
+```
+package main
+
+import (
+	"log"
+	"net/http"
+	"strconv"
+	"time"
+
+	"github.com/gin-gonic/gin"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+)
+
+type ToDoItem struct {
+	Id        int        `json:"id" gorm:"column:id;"`
+	Title     string     `json:"title" gorm:"column:title;"`
+	Status    string     `json:"status" gorm:"column:status;"`
+	CreatedAt *time.Time `json:"created_at" gorm:"column:created_at;"`
+	UpdatedAt *time.Time `json:"updated_at" gorm:"column:updated_at;"`
+}
+
+func (ToDoItem) TableName() string { return "todo_items" }
+
+func main() {
+	sql := "root:my-root-pass@tcp(127.0.0.1:3306)/todo_db?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(sql), &gorm.Config{})
+
+	if err != nil {
+		log.Fatalln("Cannot connect to MySQL:", err)
+	}
+
+	log.Println("Connected to MySQL:", db)
+
+	router := gin.Default()
+
+	v1 := router.Group("/v1")
+	{
+		v1.POST("/items", createItem(db))           // create item
+		v1.GET("/items", getListOfItems(db))        // list items
+		v1.GET("/items/:id", readItemById(db))      // get an item by ID
+		v1.PUT("/items/:id", editItemById(db))      // edit an item by ID
+		v1.DELETE("/items/:id", deleteItemById(db)) // delete an item by ID
+	}
+
+	router.Run()
+}
+
+func createItem(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var dataItem ToDoItem
+
+		if err := c.ShouldBind(&dataItem); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		// loại bỏ các khoảng trắng thừa
+		dataItem.Title = strings.TrimSpace(dataItem.Title)
+
+		if dataItem.Title == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "title cannot be blank"})
+			return
+		}
+
+		// khi mới tạo task, không được set trạng thái "finished"
+		dataItem.Status = "Doing" // trạng thái mặc định
+
+		if err := db.Create(&dataItem).Error; err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{"data": dataItem.Id})
+	}
+}
+
+func readItemById(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var dataItem ToDoItem
+
+		id, err := strconv.Atoi(c.Param("id"))
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		if err := db.Where("id = ?", id).First(&dataItem).Error; err != nil {
+			c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{"data": dataItem})
+	}
+}
+
+func getListOfItems(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		type DataPaging struct {
+			Page  int   `json:"page" form:"page"`
+			Limit int   `json:"limit" form:"limit"`
+			Total int64 `json:"total" form:"-"`
+		}
+
+		var paging DataPaging
+
+		if err := c.ShouldBind(&paging); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		if paging.Page <= 0 {
+			paging.Page = 1
+		}
+
+		if paging.Limit <= 0 {
+			paging.Limit = 10
+		}
+
+		offset := (paging.Page - 1) * paging.Limit
+
+		var result []ToDoItem
+
+		if err := db.Table(ToDoItem{}.TableName()).
+			Count(&paging.Total).
+			Offset(offset).
+			Order("id desc").
+			Find(&result).Error; err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{"data": result})
+	}
+}
+
+func editItemById(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		id, err := strconv.Atoi(c.Param("id"))
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		var dataItem ToDoItem
+
+		if err := c.ShouldBind(&dataItem); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		if err := db.Where("id = ?", id).Updates(&dataItem).Error; err != nil {
+			c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{"data": true})
+	}
+}
+
+func deleteItemById(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		id, err := strconv.Atoi(c.Param("id"))
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		if err := db.Table(ToDoItem{}.TableName()).
+			Where("id = ?", id).
+			Delete(nil).Error; err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{"data": true})
+	}
+}
+```
+
+## Lời kết
+Golang là một ngôn ngữ back-end đang được sử dụng ngày càng nhiều trong các dự án và lấy lòng được một số lượng lớn các lập trình viên, cũng nhờ một số trong nhiều lý do mình đã trình bày ở bài này đó. Hiện tại, mình đang đảm nhận vị trí full-stack tại 1 công ty sử dụng Vue và Go để xây dựng các sản phẩm của họ, chắc chắn sẽ còn nhiều điều mình có thể khai phá về ngôn ngữ và framework này.
+
+Hi vọng các bạn cũng sẽ tìm được nguồn cảm hứng lớn khi học hỏi và tìm hiểu những công nghệ mới. Chúc các bạn thành công!
+
+

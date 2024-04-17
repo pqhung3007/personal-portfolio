@@ -1,17 +1,17 @@
-import portraitImage from "@/assets/portrait.jpg";
-import Container from "@/components/Container";
+import portraitImage from '@/assets/portrait.jpg';
+import Container from '@/components/Container';
 import {
   FacebookIcon,
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
-} from "@/components/SocialIcons";
-import { cardVariants, headingVariants } from "@/utils/animation";
-import { SocialLinkProps } from "@/utils/types";
-import { AnimatePresence, motion } from "framer-motion";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
+} from '@/components/SocialIcons';
+import { cardVariants, headingVariants } from '@/utils/animation';
+import { SocialLinkProps } from '@/utils/types';
+import { AnimatePresence, motion } from 'framer-motion';
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 
 function SocialLink({
   href,
