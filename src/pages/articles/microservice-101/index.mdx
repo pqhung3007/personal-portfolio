@@ -1,0 +1,52 @@
+import Image from "next/image";
+import { ArticleLayout } from "@/components/ArticleLayout";
+import microservice from "./microservice.webp";
+
+export const metadata = {
+  date: "2023-11-30",
+  title: "Microservice 101 - những điều cơ bản",
+  description:
+    "Nó là cái gì mà mọi người nhắc tới và sử dụng nhiều vậy?",
+};
+
+export default ({ children }) => (
+  <ArticleLayout metadata={metadata}>{children}</ArticleLayout>
+);
+
+# Microservice 101 - những điều cơ bản
+
+Với xuất phát điểm là front-end developer, trước đây mình cũng chỉ nghe tới cái tên "microfrontend" thôi, còn "microservice" - dịch vụ siêu nhỏ thì lạ hoắc. Nhưng vì xung quanh mình có nhiều bạn làm bên back-end, họ nói về nó suốt với cảm giác nó là thứ gì đó xịn sò lắm. Điều đó kích thích mình bắt tay tìm hiểu xem microservice là cái gì? Tại sao phải sinh ra nó?
+
+## Đầu tiên, định nghĩa microservices
+Đơn giản, nó là một từ khóa được khai sinh trong mảng kiến trúc phần mềm (từ bao giờ mình cũng không bận tâm lắm). Cụ thể, các module trong phần mềm này được chia thành các service rất nhỏ.
+
+## Tại sao microservices lại ra đời?
+Đào sâu thêm một chút thì chúng ta biết, người tiền nhiệm của nó chính là kiến trúc monolithic (đơn khối). Tức là, mình gom tất cả code, database, view vào 1 project lớn. Do các module này dính với nhau thành một khối to, nên khi có bất kỳ sự thay đổi nào, ta phải phải deploy lại toàn bộ code. Rồi đến khi số lượng người dùng tăng lên, ta cũng phải nâng cấp RAM, CPU máy chủ theo kiểu chiều dọc. Đến một mức mà tài chính không đủ để đáp ứng nữa, thì dự án...ngỏm.
+
+Vậy là 1 sáng kiến mới được sinh ra. Chúng ta sẽ chia nhỏ dự án to khủng kia thành các phần nhỏ, dễ quản lý hơn. Lấy ví dụ thực tiễn cho dễ hiểu đi. Từ 1 căn phòng mà mình không biết gọi là gì, bao gồm bồn tắm, máy giặt, toilet, giờ đây mình sẽ cho từng ông một ra các khu vực khác nhau. Dễ hiểu hơn rồi phải không? Mỗi ông sẽ lo một nhiệm vụ riêng mà không làm ảnh hưởng tới các ông khác. Một người đang sử dụng buồng tắm sẽ không phải chờ đợi hay lo lắng về một người đang làm gì đó trong toilet nữa.
+
+Nói vui là vậy, bây giờ mình xin đưa ra 1 ví dụ thực tiễn để các bạn hình dung rõ hơn về việc chia module trong kiến trúc microservices của sản phẩm đồ án tốt nghiệp về ví điện tử của mình diễn ra như thế nào:
+- **OTP**: chịu trách nhiệm gửi mã OTP xác thực cho người dùng khi đăng ký, thao tác chuyển tiền,..
+- **eKYC**: xác thực người dùng sử dụng ví điện tử qua hình thức xác minh CCCD, khuôn mặt
+- **User**: service chính quản lý người dùng ví, ở đây là sinh viên
+- **Storage**: service chứa ảnh được đẩy lên qua các thao tác xác thực, gửi đơn
+
+## Cái gì cũng có mặt tốt và chưa tốt
+Đúng vậy. Hãy cùng làm 1 phép so sánh như sau nhé
+
+**Ưu điểm**
+- **Dễ nâng cấp và scale**, đây là điều quan trọng nhất. Chúng ta sẽ không cần dựa dẫm nhiều vào nguồn tài nguyên phần cứng dồi dào nữa. Việc nâng cấp bây giờ có thể diễn ra theo chiều ngang, tùy thuộc vào độ lớn và quan trọng của từng service mà sẽ có một nguồn phân bổ khác nhau.
+- **Độc lập**: nếu 1 service bị lỗi, toàn bộ hệ thống còn lại vẫn sẽ hoạt động bình thường. Còn với monolithic, một module lỗi sẽ dẫn đến tình trạng "một con ngựa đau, cả tàu cũng đau" luôn đó.
+- **Cho phép sự đa dạng**: trong việc áp dụng công nghệ. Mỗi service có thể sử dụng 1 ngôn ngữ, hoặc loại database riêng. Điều này sẽ phù hợp cho một dự án với các thành viên có thể sử dụng nhiều công nghệ khác nhau.
+
+**Nhược điểm**
+- **Vấn đề đồng bộ**: tốc độ giao tiếp giữa các service không cao hoặc tính đồng nhất dữ liệu trong database. Ở phần này, monolithic sẽ chiếm lợi thế hơn.
+- **Trình độ chuyên môn**: một đội ngũ giỏi sẽ cần thiết trong việc xây dựng hệ thống microservice. Ví dụ, cần devops để config CI/CD, quản lý hệ thống; Solution Architect để phân tích module, Dev giỏi để code và setup worklow.
+
+## Nhìn rộng hơn
+Thực ra, không phải công nghệ xịn thì sản phẩm cũng to và xịn tương ứng. Với những dự án nhỏ, budget không cao, hoặc như những đối tượng sinh viên làm sản phẩm thì monolithic vẫn là sự lựa chọn chắc chắn hơn. Giống như người xưa đã nói, không nên *dùng dao mổ trâu để chặt thịt gà*. Ví dụ như hình dưới đây:
+<Image src={microservice} alt="" />
+*Với hệ thống nhỏ hoặc đơn giản, monolithic vẫn là lựa chọn tốt hơn*
+
+Nói chung là cái gì cũng nên phát triển từ nhỏ đến lớn. Microservice cũng chưa thể thay thế hoàn toàn monolithic trong hiện tại và cả tương lai. Vậy nên, các bạn có thể tìm hiểu và thử áp dụng cả 2 kiến trúc, nhưng đừng thần thánh hóa bất cứ cái nào nhé.
+

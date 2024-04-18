@@ -1,0 +1,42 @@
+import Image from "next/image";
+import { ArticleLayout } from "@/components/ArticleLayout";
+
+export const metadata = {
+  date: "2023-12-31",
+  title: "Tổng kết 2023: những điều mình chưa biết",
+  description:
+    "Chỉ là ở hiện tại mình chưa biết thôi, trong tương lai còn phải học nhiều",
+};
+
+export default ({ children }) => (
+  <ArticleLayout metadata={metadata}>{children}</ArticleLayout>
+);
+
+# Tổng kết 2023: những điều mình chưa biết
+
+> Bài này mình lấy cảm hứng từ [Dan Abramov](https://github.com/gaearon) - 1 người rất nổi tiếng trong cộng đồng open source front-end. Mình ngạc nhiên bởi với trình độ và danh tiếng của anh ấy (làm ở Meta) mà vẫn có những phần kiến thức còn khiếm khuyết. Quan trọng là, Dan không ngại nói ra những cảm giác "Imposter syndrome" đấy. Vậy nên, mình cũng muốn liệt kê ra một số công nghệ, kiến thức còn chưa nắm vững để thành thật với bản thân, từ đó có kế hoạch học tập tốt hơn. Bắt đầu thôi! 
+
+- **Bash script**. mình mới chỉ biết những lệnh cơ bản, kiểu như `cd`, `mkdir`, `ls`, `nano`, và phần lớn nhu cầu sử dụng cũng chỉ đến vậy .Còn với những lần chứng kiến những người bạn "múa" trên terminal của Linux với những command nâng cao khác, thì mình ngậm ngùi thừa nhận là chưa chạm được đến đó.
+
+- **Công nghệ cũ**. Với ví dụ class component của React và version 2 của Vue. Mình thực sự thấy syntax của nó rất dài dòng, nặng về boilerplate. Mình đã quen việc học và dùng những chức năng mới nhất của 1 framework (long-term support).
+
+- **Networking & Bảo mật**. Ngoài việc phân biệt HTTP/HTTPS và CORS (cross-origin resource sharing), chứ mình không hiểu những phần khác vì chưa được ứng dụng chúng.
+
+- **Database nâng cao** nhu cầu thực tế cho đến nay của mình chủ yếu là `SELECT`, nên mình chưa nắm rõ về cách tối ưu database. Việc đánh index, query cache,... tất cả mới chỉ nằm ở lý thuyết.
+
+- **Kubernetes**: "một công cụ để tổ chức các Docker containers", rồi sao nữa? Phải là một hệ thống rất lớn mới có nhu cầu sử dụng phải không?
+
+- **Data Structure & Algorithm**. mình ngưỡng mộ các bạn giải những bài giải thuật nhoay nhoáy như học sinh tiểu học làm toán. Đương nhiên mình có biết những phần cơ bản: sorting, big O notation. Tuy nhiên những phần kiến thức xa xôi khác cần được gắn với 1 vấn đề thực tế để mình có thể nắm chắc.
+
+- **GraphQL**. Nodes và edges có vẻ hơi khó hiểu. Mình đã sử dụng RESTful API từ lâu và mới tiếp xúc với gRPC gần đây. Liệu biết thêm 1 kiến trúc API nữa có gây rối không nhỉ?  
+
+- **CSS Methodologies**. Mình đã sử dụng BEM (chưa chuẩn chỉ). Chỉ thế thôi, mấy cái như OOCSS thì mình không biết, nhiều người còn toát mồ hôi trong việc áp dụng chuẩn BEM và nghĩ ra tên class cơ mà.
+
+- **System Design**. nó thực sự rất hay và sâu khi lên những level cao hơn. Tuy nhiên mình vẫn đang hạn chế ở mảng này, mới chỉ dừng lại ở bước thiết kế các component nhỏ lẻ.
+
+- **Native mobile**. mình đã có 1 sản phẩm thành công với Expo - 1 framework vốn đã cung cấp nhiều abstraction layers hữu ích khi làm app mobile. Mình vẫn chưa hiểu tại sao phải tạo ra native code cho iOS và Android khi sử dụng React Native, hơn nữa việc build native code cũng phải thông qua Xcode và Android Studio - vô cùng phức tạp.
+
+Đương nhiên là list trên còn nhiều, chỉ là hiện tại mình mới chỉ nghĩ đến thế thôi.
+
+## Lời kết
+Với vai trò là 1 developer, kể cả ở fresher hay tech lead, việc chưa biết, thậm chí nhiều điều là thứ rất bình thường. Trước đây mình cũng từng e ngại với bạn bè vì một số điều kể trên, nhưng giờ thì bớt rồi. Mình biết giá trị của mình nằm ở đâu, qua ý nghĩa của những kiến thức đã biết và đã sử dụng nhiều lần. Quan trọng là, mình biết mình đang thiếu những phần nào, và liệu nó có thật sự quan trọng để mình đào sâu học hỏi hay không. Học hành là chuyện cả đời mà hehe.
