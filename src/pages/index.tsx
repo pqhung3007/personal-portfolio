@@ -38,9 +38,8 @@ function PhotosRow() {
         <div className="flex min-w-full flex-shrink-0 animate-flow justify-center gap-4 py-4 sm:gap-10">
           {assets.map((image, index) => (
             <div
-              className={`relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl sm:w-72 ${
-                rotations[index % rotations.length]
-              }`}
+              className={`relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl sm:w-72 ${rotations[index % rotations.length]
+                }`}
               key={image.src}
             >
               <Image
@@ -59,9 +58,8 @@ function PhotosRow() {
         >
           {assets.map((image, index) => (
             <div
-              className={`relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl sm:w-72 ${
-                rotations[index % rotations.length]
-              }`}
+              className={`relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl sm:w-72 ${rotations[index % rotations.length]
+                }`}
               key={image.src}
             >
               <Image
@@ -112,10 +110,10 @@ export default function Home({ articles }: { articles: ArticleMetadata[] }) {
           transition={{ duration: 1 }}
         >
           <h1 className="mt-8 text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Front-end developer and book enthusiast
+            Full-stack developer and book enthusiast
           </h1>
           <p className="track mt-6 text-base leading-7 tracking-[0.01rem] text-zinc-600 dark:text-zinc-400">
-            I&apos;m Quang Hung, a frontend developer and a senior student based
+            I&apos;m Quang Hung, a full-stack developer and a senior student based
             in Hanoi, Vietnam. My top priority is to arm myself with the best
             software knowledge in order to prepare for the future profession.
           </p>

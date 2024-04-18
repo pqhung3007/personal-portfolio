@@ -111,7 +111,7 @@ export default function Skills() {
 
       <a
         className="group mt-6 inline-flex w-full items-center justify-center rounded-md bg-zinc-100 p-3 text-sm font-semibold text-zinc-800 transition hover:bg-zinc-200 active:text-zinc-800/60 dark:bg-zinc-800/80 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
-        href="/files/MyCV.pdf"
+        href="/files/CV.pdf"
         target={'_blank'}
         download
       >
