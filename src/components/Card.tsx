@@ -9,7 +9,7 @@ export function Card({
   children: React.ReactNode;
 }) {
   return (
-    <Component className="group relative flex flex-col items-start">
+    <Component className="group relative flex flex-col items-start h-full">
       {children}
     </Component>
   );

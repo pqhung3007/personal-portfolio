@@ -1,0 +1,147 @@
+import Image from "next/image";
+import { ArticleLayout } from "@/components/ArticleLayout";
+import comparison from "./comparison.jpeg";
+
+export const metadata = {
+  date: "2024-02-04",
+  title: "React vs Vue trên quan điểm cá nhân",
+  description:
+    "Đánh giá 2 công cụ front-end mình đã trải nghiệm và làm việc để xem, ông nào có những điểm hay hơn",
+};
+
+export default ({ children }) => (
+  <ArticleLayout metadata={metadata}>{children}</ArticleLayout>
+);
+
+# React vs Vue trên quan điểm cá nhân
+
+Trong quãng thời gian làm việc chuyên nghiệp, mình may mắn được tiếp xúc với cả React.js (library) và Vue.js (framework). Việc phân biệt giữa 2 khái niệm này các bạn có thể tham khảo các bài viết trên mạng khác nhé. Còn bây giờ, với vai trò là trọng tài, mình sẽ đưa ra nhận định riêng trong việc ông này mạnh hơn ông còn lại ở những điểm nào.
+
+## 1. React.js
+- **Cộng đồng đông đảo**. Điều này là quá đỗi rõ ràng. Việc ra đời trước, cùng với việc được chống lưng bởi ông kẹ Facebook đã giúp React củng cố vị trí vững chắc trong cuộc đua giành số lượng người sử dụng trong bộ 3 React - Vue - Angular. Dưới đây là thống kê của [StackOverflow năm 2023](https://survey.stackoverflow.co/2023/#most-popular-technologies-webframe)
+<Image src={comparison} />
+*Tỉ lệ % số người dùng React (bao gồm cả người chuyên nghiệp và người học code) hơn cả tỉ lệ của Angular và Vue cộng lại*
+
+Tỉ lệ này cũng tương tự với số lượng công việc cho từng công nghệ trên thị trường. Các bạn thấy người người nhà nhà React cũng vì lý do đấy. Hơn nữa, cũng chính vì lẽ sở hữu cộng đồng lớn, số lượng thư viện hỗ trợ cho React cũng hoàn toàn áp đảo cho với Vue. Mình thấy điều này vô cùng tiện lợi, nhất là khi làm các dự án front-end bên ngoài. Bởi mình biết chắc đã có người giải quyết hộ mình chuyện gì đó rồi, mình chỉ cần học cách triển khai tiếp theo hướng dẫn của họ thôi mà không cần phải làm lại mọi thứ từ đầu. Còn với Vue, thì khá tiếc rằng mình sẽ phải bỏ nhiều công sức hơn, và mất thời gian hơn để đạt được mục tiêu tương tự. 
+
+- **Hỗ trợ TypeScript mạnh hơn**. Một điểm lợi thế lớn khi sử dụng TypeScript với React là khả năng sử dụng **generic type** để tạo ra những component vừa tái sử dụng được, vừa có typing chắc chắn, áp dụng được với nhiều type khác nhau. Trong khi đó Vue, với cấu trúc vốn là template HTML, lại không hỗ trợ điều này. Để mình lấy ví dụ:
+```
+import React from 'react';
+
+// Define a generic component that takes a single value of type T
+interface Props<T> {
+  content: T;
+}
+
+// Define a functional component with a generic type
+function Card<T>({ content }: Props<T>) {
+  return (
+    <div>
+      <p>{content}</p>
+    </div>
+  );
+}
+
+// Example usage:
+function App() {
+  return (
+    <div>
+      <h1>Generic Card Example</h1>
+      {/* Render a Card with a string content */}
+      <Card content="Hello, World!" />
+      {/* Render a Card with a number content */}
+      <Card content={42} />
+    </div>
+  );
+}
+
+export default App;
+```
+*Component Card có thể render ra các loại content khác nhau, bất kể là `string`, `number` hay cả `object`*
+
+- **Bắt kịp thời đại nhanh và đồng bộ**. Sự nâng cấp phiên bản 16.8 vào đầu năm 2019 với việc chuyển thể từ class component sang function component và sự ra đời của hooks là một bước tiến lớn của React. Sau gần 5 năm, đến nay hầu hết chúng ta đã thống nhất quen với việc sử dụng những syntax mới và những sự hỗ trợ xung quanh function component rồi.
+Tuy nhiên, khi đối chiếu sang Vue, với thay đổi cũng cực lớn từ ver2 sang ver3 lại không mang lại ảnh hưởng lớn đến vậy. Rất nhiều công ty vẫn tiếp tục sử dụng Vue 2 khi nó đã bước tới giai đoạn (EOL - hết vòng đời), khiến cho việc bảo trì và nâng cấp sau này trở nên khó khăn hơn. 
+
+## 2. Vue.js
+- **Cú pháp thân thiện với người mới**. Dễ hiểu đối với những bạn bắt đầu học code front-end, bạn sẽ thấy cú pháp của Vue - dựa trên HTML đơn giản hơn nhiều so với JSX của JavaScript. Lấy ví dụ về việc biểu diễn 1 toán tử điều kiện để cho thấy Vue gọn gàng đến nhường nào:
+```
+<template>
+  <div>
+    <div v-if="isAdmin">
+      Welcome, admin
+    </div>
+    <div v-else-if="isNormalUser">
+      Welcome, user!
+    </div>
+    <div v-else>
+      Please log in.
+    </div>
+  </div>
+</template>
+```
+*Trong khi đó với React*
+```
+export default function ConditionalRendering({ isAdmin, isNormalUser }) {
+  let greeting = '';
+
+  if (isAdmin) {
+    greeting = "Welcome, admin";
+  } else if (isNormalUser) {
+    greeting = "Welcome, user";
+  } else {
+    greeting = 'Please log in.';
+  }
+
+  return (
+    <div>
+      <div>{greeting}</div>
+    </div>
+  );
+};
+```
+
+- **Binding dữ liệu 2 chiều** `v-model` directive của Vue cho phép việc binding dữ liệu 2 chiều trở nên rát thuận lợi. Ví dụ khi nhập vào ô input, giá trị của ô input sẽ ngay lập tức được cập nhật ở trong data model. Ngược lại với React, chúng ta phải cập nhật lại state thông qua 1 callback function khác. Việc này đặc biệt hữu dụng khi thao tác với `form` và `input`
+
+**Vue**
+```
+<template>
+    <div>
+        <input v-model="name" placeholder="Enter your name">
+        <p>Hello, {{ name }}!</p>
+    </div>
+</template>
+
+<script setup>
+import { ref } from "vue"
+const name = ref("")
+</script>
+```
+
+**React**
+```
+import React, { useState } from 'react';
+
+export default function App() {
+    const [name, setName] = useState('');
+
+    return (
+        <div>
+            <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your name"
+            />
+            <p>Hello, {name}!</p>
+        </div>
+    );
+}
+```
+
+- **Doc dễ hiểu hơn**. Ngày đầu tiên tiếp xúc với Vue, mình đã bị ấn tượng bởi lộ trình và cách trình bày rất gọn gàng của trang doc chính thức. Có 2 lựa chọn **Composition API** và **Option API** cho chúng ta lựa chọn, các đề mục được ghi rõ ràng khiến việc tra cứu của chúng ta trở nên thuận lợi hơn. So với React với lượng kiến thức lớn hơn, cùng một trang doc chưa được đặt đề mục rõ ràng, đủ để khiến những người mới cảm thấy "mông lung chút nhẹ"
+
+> [Doc chính thức của Vue](https://vuejs.org/) 
+
+> [Doc chính thức của React](https://react.dev/) 
+
+## Kết luận
+Với việc đã có khoảng thời gian làm việc như nhau với cả 2 công cụ, thì mình vẫn ưu tiên React hơn, vì bản thân đã quen thuộc với cấu trúc JSX, trông có vẻ nâng cao hơn template HTML, và việc React đem lại nhiều cơ hội việc làm hơn. Tuy nhiên, mình không thể phủ nhận những sự đơn giản, tinh tế mà Vue mang lại. Thỉnh thoảng mình cũng tự làm những project nhỏ bằng Vue, và đang học cả Nuxt - 1 framework fullstack mở rộng cho Vue nữa. Còn bạn, sau khi tham khảo qua bài viết của mình, thì đã có lựa chọn ưu tiên cho mình rồi chứ?
